@@ -1,0 +1,371 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors inspired by Japanese ink and paper */
+    --ink-black: #1a1a1a;
+    --warm-black: #2d2d2d;
+    --paper-white: #fafaf8;
+    --pure-white: #ffffff;
+    --accent-gold: #d4af37;
+    --subtle-gray: #6c6c6c;
+    --light-gray: #e8e8e6;
+
+    /* Typography */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    /* Spacing - generous for Ma (間) */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+    --space-2xl: 12rem;
+
+    /* Container */
+    --max-width: 720px;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-black);
+    background-color: var(--paper-white);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: var(--space-md);
+    color: var(--warm-black);
+}
+
+.lead {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink-black);
+    margin-bottom: var(--space-md);
+}
+
+/* Sections with generous spacing */
+section {
+    padding: var(--space-2xl) 0;
+    position: relative;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-xl) 0;
+    background: linear-gradient(180deg, var(--pure-white) 0%, var(--paper-white) 100%);
+}
+
+.hero-title {
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--warm-black);
+    margin-bottom: var(--space-lg);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--ink-black);
+    color: var(--paper-white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+    border: 2px solid var(--ink-black);
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--ink-black);
+    transform: translateY(-2px);
+}
+
+/* Opportunity Section */
+.opportunity {
+    background-color: var(--pure-white);
+}
+
+/* What We Do Section */
+.what-we-do {
+    background-color: var(--paper-white);
+}
+
+.section-intro {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xl);
+    color: var(--warm-black);
+}
+
+.services {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.service h3 {
+    margin-bottom: var(--space-sm);
+}
+
+.service p {
+    color: var(--warm-black);
+}
+
+/* How We Work */
+.how-we-work {
+    background-color: var(--pure-white);
+}
+
+.work-methods {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+}
+
+.method {
+    padding: var(--space-lg);
+    background-color: var(--paper-white);
+    border-left: 3px solid var(--accent-gold);
+}
+
+.method-tagline {
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+}
+
+.timeline {
+    margin: var(--space-md) 0;
+    padding-left: var(--space-md);
+}
+
+.week {
+    margin-bottom: var(--space-sm);
+    color: var(--warm-black);
+}
+
+/* Who This Is For */
+.who-for {
+    background-color: var(--paper-white);
+}
+
+.who-for ul {
+    list-style: none;
+    padding: 0;
+}
+
+.who-for li {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--warm-black);
+}
+
+.who-for li:before {
+    content: "•";
+    color: var(--accent-gold);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* What Makes Us Different */
+.different {
+    background-color: var(--pure-white);
+}
+
+.differences p {
+    padding: var(--space-sm) 0;
+    color: var(--warm-black);
+}
+
+.differences .statement {
+    margin-top: var(--space-lg);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink-black);
+    text-align: center;
+    padding: var(--space-lg) 0;
+}
+
+/* Contact Section */
+.contact {
+    background-color: var(--paper-white);
+    text-align: center;
+    padding: var(--space-2xl) 0;
+}
+
+.contact-intro {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+}
+
+.contact-details {
+    font-weight: 600;
+    color: var(--ink-black);
+    margin-bottom: var(--space-md);
+}
+
+.contact-alt {
+    margin-top: var(--space-md);
+    color: var(--subtle-gray);
+}
+
+.contact-alt a {
+    color: var(--ink-black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink-black);
+}
+
+/* Footer */
+footer {
+    background-color: var(--ink-black);
+    color: var(--paper-white);
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
+
+footer p {
+    color: var(--paper-white);
+    opacity: 0.9;
+    margin-bottom: var(--space-sm);
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+    font-weight: 500;
+    margin-top: var(--space-md);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --space-2xl: 6rem;
+        --space-xl: 4rem;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: var(--space-xl) 0;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .method {
+        padding: var(--space-md);
+    }
+}
+
+/* Subtle hover effects */
+a {
+    transition: all 0.3s ease;
+}
+
+section {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Stagger section animations */
+section:nth-child(1) { animation-delay: 0s; }
+section:nth-child(2) { animation-delay: 0.1s; }
+section:nth-child(3) { animation-delay: 0.2s; }
+section:nth-child(4) { animation-delay: 0.3s; }
+section:nth-child(5) { animation-delay: 0.4s; }
+section:nth-child(6) { animation-delay: 0.5s; }
+section:nth-child(7) { animation-delay: 0.6s; }
