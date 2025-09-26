@@ -251,13 +251,86 @@ section {
     color: var(--warm-black);
 }
 
-.who-for li:before {
+
+.fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+}
+
+.fit-column h3 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+    color: var(--warm-black);
+    opacity: 0.7;
+}
+
+.fit-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.fit-column li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xs);
+    padding-left: 0;
+}
+
+.fit-column:first-child li {
+    color: var(--warm-black);
+    font-weight: 500;
+}
+
+.fit-column:last-child li {
+    color: var(--subtle-gray);
+    font-weight: 400;
+}
+
+.fit-column li:before {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .fit-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.investment-details {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--light-gray);
+    font-size: 1rem;
+    color: var(--warm-black);
+}
+
+/* Unified list styles */
+.deliverables-list,
+.how-we-work ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.deliverables-list li,
+.how-we-work ul li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: var(--space-xs);
+    color: var(--warm-black);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.deliverables-list li:before,
+.how-we-work ul li:before {
     content: "•";
+    position: absolute;
+    left: -1rem;
     color: var(--accent-gold);
     font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
 }
 
 /* What Makes Us Different */
@@ -289,13 +362,10 @@ section {
 }
 
 .contact-intro {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-sm);
-}
-
-.contact-details {
+    font-size: 1.3rem;
     font-weight: 500;
     margin-bottom: var(--space-md);
+    opacity: 1;
 }
 
 .contact .cta-button {
