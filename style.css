@@ -54,7 +54,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: none;
+    background-color: var(--paper-white);
     z-index: 1000;
     padding: var(--space-sm) 0;
 }
@@ -325,7 +325,6 @@ section {
 footer {
     background-color: var(--ink-black);
     padding: var(--space-sm) 0;
-    border-top: 1px solid rgba(250, 250, 248, 0.1);
 }
 
 /* Animations */
