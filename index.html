@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <!-- Calendly widget -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
     <!-- Header -->
@@ -25,7 +28,7 @@
                 We are an AI-native product development agency. We translate your unique taste into customer experiences
                 that feel like working with you at your best.
             </p>
-            <a href="#contact" class="cta-button">Let's Talk</a>
+            <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kateleext/takuma-free-consultation'});return false;" class="cta-button">Let's Talk</a>
         </div>
     </section>
 
@@ -39,7 +42,7 @@
             </p>
             <p>
                 Winning was never about feature parity. While others automate the mundane, we amplify the exceptional. Your taste.
-                Your judgment and specific genius, encoded in AI-enabled software and agents. Because when everyone can build anything, the only competitive
+                Your judgment and specific genius, encoded in agentic product experiences. Because when everyone can build anything, the only competitive
                 advantage is building what only you could build.
             </p>
         </div>
@@ -150,13 +153,13 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>Let's Talk</h2>
-            <p class="contact-intro">If this resonates, we should have a conversation.</p>
+            <p class="contact-intro">If this resonates, let's talk.</p>
             <p class="contact-details">30 minutes. Free. No pitch.</p>
             <p>
                 Come ready to talk about your business. Leave with a concrete vision for how to scale
                 your magic through software. Ideas you can use, whether we work together or not.
             </p>
-            <a href="mailto:kate@takuma.ai" class="cta-button">Start a Conversation</a>
+            <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kateleext/takuma-free-consultation'});return false;" class="cta-button">Start a Conversation</a>
             <p class="contact-alt">Or just say hello: <a href="mailto:kate@takuma.ai">kate@takuma.ai</a></p>
         </div>
     </section>
