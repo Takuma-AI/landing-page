@@ -154,6 +154,21 @@ section {
 /* Opportunity Section */
 .opportunity {
     background-color: var(--pure-white);
+    padding: var(--space-2xl) 0;
+}
+
+.opportunity h2 {
+    margin-bottom: var(--space-xl);
+}
+
+.opportunity .lead {
+    margin-bottom: var(--space-lg);
+    line-height: 1.7;
+}
+
+.opportunity p:last-child {
+    margin-bottom: 0;
+    line-height: 1.7;
 }
 
 /* What We Do Section */
