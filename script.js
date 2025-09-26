@@ -59,20 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', requestTick);
 
-    // Add golden thread animation on hover for service items
-    const services = document.querySelectorAll('.service');
-    services.forEach(service => {
-        service.addEventListener('mouseenter', function() {
-            this.style.borderLeft = '3px solid var(--accent-gold)';
-            this.style.paddingLeft = 'var(--space-md)';
-            this.style.transition = 'all 0.3s ease';
-        });
-
-        service.addEventListener('mouseleave', function() {
-            this.style.borderLeft = 'none';
-            this.style.paddingLeft = '0';
-        });
-    });
 
     // Typewriter effect for hero title (subtle)
     const heroTitle = document.querySelector('.hero-title');
