@@ -55,7 +55,6 @@ body {
     left: 0;
     right: 0;
     background-color: var(--paper-white);
-    border-bottom: 1px solid var(--light-gray);
     z-index: 1000;
     padding: var(--space-sm) 0;
 }
@@ -188,30 +187,52 @@ section {
 }
 
 .work-methods {
-    display: grid;
-    gap: var(--space-xl);
     margin-top: var(--space-lg);
 }
 
-.method {
-    padding: var(--space-md);
-    background-color: var(--paper-white);
-    border-left: 3px solid var(--accent-gold);
+.sprint-section {
+    margin-bottom: var(--space-xl);
 }
 
-.method-tagline {
-    font-weight: 500;
-    margin-bottom: var(--space-md);
+.sprint-intro {
+    color: var(--subtle-gray);
+    margin-bottom: var(--space-lg);
 }
 
-.timeline {
-    margin: var(--space-md) 0;
-    padding-left: var(--space-md);
+.timeline-grid {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0;
 }
 
-.week {
-    margin-bottom: var(--space-sm);
-    color: var(--warm-black);
+.timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-md);
+    align-items: baseline;
+}
+
+.week-label {
+    font-weight: 600;
+    color: var(--ink-black);
+}
+
+.week-desc {
+    color: var(--subtle-gray);
+}
+
+.sprint-outcome {
+    color: var(--subtle-gray);
+    font-style: italic;
+    margin-top: var(--space-lg);
+}
+
+.partnership-section {
+    margin-top: var(--space-xl);
+}
+
+.partnership-section p {
+    color: var(--subtle-gray);
 }
 
 /* Who This Is For */
@@ -361,8 +382,9 @@ footer p:last-child {
         font-size: 1rem;
     }
 
-    .method {
-        padding: var(--space-sm);
+    .timeline-item {
+        grid-template-columns: 80px 1fr;
+        gap: var(--space-sm);
     }
 }
 
