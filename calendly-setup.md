@@ -40,6 +40,12 @@ Video Conferencing (Zoom/Google Meet)
 **Question:** "What are you building toward right now?"
 **Help Text:** "Next funding round, specific revenue target, product milestone, etc."
 
+### 4. AI Attempts (Optional)
+**Field Type:** Long Answer (Optional)
+**Field Name:** ai_experience
+**Question:** "How have you tried using AI so far?"
+**Help Text:** "What worked, what didn't, what felt off"
+
 ## Calendar Invite Details
 
 ### Event Title (Sent to Invitee)
