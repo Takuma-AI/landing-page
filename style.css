@@ -409,7 +409,16 @@ section {
 /* Footer */
 footer {
     background-color: var(--ink-black);
-    padding: var(--space-sm) 0;
+    padding: var(--space-md) 0;
+    position: relative;
+}
+
+.footer-text {
+    color: var(--paper-white);
+    opacity: 0.05;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    font-weight: 500;
 }
 
 /* Animations */
