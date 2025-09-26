@@ -1,18 +1,18 @@
 # Calendly Setup for Takuma Consultation
 
 ## Event Name
-**Takuma Consultation**
+**Takuma Consultation - Scale What Only You Can Do**
 
 ## Event Description
 ```
-30-minute call to discuss how to scale what only you can do.
+A conversation about the parts of your business that don't scale without you.
 
-We'll talk about:
-• What customers pay you for vs what they actually need from you
-• Where you're stuck scaling yourself
-• If/how AI can help
+We'll explore:
+• What happens when you're in the room vs when you're not
+• Which parts of your judgment could be encoded into product
+• Whether AI can actually help (sometimes it can't)
 
-No pitch. Just figuring out if we can help each other.
+30 minutes. Come with your real challenges. Leave with concrete ideas.
 ```
 
 ## Duration
@@ -26,31 +26,34 @@ Video Conferencing (Zoom/Google Meet)
 ### 1. Company Website
 **Field Type:** Short Answer (Required)
 **Field Name:** company_website
-**Question:** "Company website?"
+**Question:** "Your company (website or brief description)"
 
-### 2. What You're Building Toward
+### 2. The Gap
+**Field Type:** Long Answer (Required)
+**Field Name:** the_gap
+**Question:** "What happens when you're in the room that doesn't happen when you're not?"
+**Help Text:** "The specific difference your presence makes"
+
+### 3. The Goal
 **Field Type:** Long Answer (Required)
 **Field Name:** current_goal
-**Question:** "What are you trying to accomplish in the next 6 months?"
-**Help Text:** "Be specific"
-
-### 3. The Bottleneck
-**Field Type:** Long Answer (Required)
-**Field Name:** bottleneck
-**Question:** "What part of your business requires you personally that you wish didn't?"
+**Question:** "What are you building toward right now?"
+**Help Text:** "Next funding round, specific revenue target, product milestone, etc."
 
 ## Calendar Invite Details
 
 ### Event Title (Sent to Invitee)
 ```
-[Invitee Name] × Kate - Takuma
+[Invitee Name] × Kate - Takuma Consultation
 ```
 
 ### Event Description (In Calendar)
 ```
-Talk about what you're building and where you're stuck.
+We'll discuss the gap between what you deliver personally and what your product delivers.
 
-I'll share what I've learned from similar situations.
+I'll share what I've learned about encoding founder judgment into software.
+
+Looking forward to understanding what you're building.
 
 Kate
 ```
@@ -59,32 +62,37 @@ Kate
 
 ### Subject
 ```
-Confirmed for {date}
+Confirmed: {date} at {time}
 ```
 
 ### Body
 ```
 {name},
 
-See you {date} at {time}.
+Looking forward to talking {date} at {time}.
 
-I'll look at {company_website} beforehand.
+I'll review what you shared about the gap between your presence and your product.
+Come ready to dig into specifics - the more concrete, the more useful our conversation will be.
 
 Kate
+
+P.S. Calendar link is attached. Zoom details will be in the invite.
 ```
 
 ## Reminder Email (24 hours before)
 
 ### Subject
 ```
-Tomorrow at {time}
+Tomorrow: Our conversation about scaling you
 ```
 
 ### Body
 ```
 {name},
 
-Talk tomorrow at {time}.
+We're talking tomorrow at {time} about {the_gap}.
+
+Bring your hardest problem. The one that keeps requiring your personal attention.
 
 Kate
 ```
@@ -92,20 +100,25 @@ Kate
 ## Post-Meeting Follow-up Template
 
 ```
-Subject: Notes from our call
+Subject: Re: {the_gap}
 
 {name},
 
-Here's what I heard:
-[Key problem they described]
+Thanks for walking me through how you operate vs how your product operates.
 
-Here's what might help:
-[1-2 specific suggestions]
+Here's what stood out:
+[Specific pattern about their judgment/taste that isn't in their product]
 
-If you want to work together on this, let me know.
-If not, good luck with [specific thing they're building].
+Based on what we discussed, here are two paths forward:
+1. [Specific tactical thing they could try immediately]
+2. [Larger strategic shift that would address root cause]
+
+If you want to explore working together on encoding your approach into product, let me know.
+Otherwise, I hope this gives you clarity on next steps.
 
 Kate
+
+P.S. [Something specific they said that revealed deep insight]
 ```
 
 ## Settings Recommendations
