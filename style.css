@@ -309,13 +309,9 @@ section {
 
 .start-date-tag {
     display: inline-block;
-    background: rgba(184, 134, 11, 0.1);
     color: var(--accent-gold);
-    padding: 4px 12px;
-    border-radius: 4px;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid var(--accent-gold);
 }
 
 .momentum {
@@ -635,6 +631,10 @@ footer {
         padding: var(--space-lg) 0;
     }
 
+    .hero-content {
+        text-align: left;
+    }
+
     .hero-title {
         font-size: 2.5rem;
         line-height: 1.15;
@@ -643,6 +643,8 @@ footer {
     .hero-subtitle {
         font-size: 1.125rem;
         line-height: 1.5;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .section-intro {
