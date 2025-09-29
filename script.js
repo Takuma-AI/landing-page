@@ -22,57 +22,56 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         }
     });
-    // Services carousel with fade
-    const carouselDots = document.querySelectorAll('.carousel-dot');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-    let currentTab = 0;
-    const tabs = ['grow', 'delight', 'innovate'];
-    let autoAdvanceInterval = null;
-    let userHasInteracted = false;
+    // Scroll-triggered accordion
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    const accordionSection = document.querySelector('.services-accordion');
+    let currentAccordion = 0;
+    let hasScrolledPast = false;
 
-    function showTab(tabName) {
-        // Update dots
-        carouselDots.forEach(dot => {
-            dot.classList.toggle('active', dot.dataset.tab === tabName);
-        });
+    function updateAccordion() {
+        if (!accordionSection) return;
 
-        // Update panels with fade effect
-        tabPanels.forEach(panel => {
-            panel.classList.toggle('active', panel.dataset.panel === tabName);
-        });
+        const sectionRect = accordionSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const scrollProgress = -sectionRect.top / (sectionRect.height - windowHeight/2);
 
-        // Update current tab index
-        currentTab = tabs.indexOf(tabName);
-    }
+        // Only activate when section is in view
+        if (sectionRect.top < windowHeight * 0.7 && sectionRect.bottom > windowHeight * 0.3) {
+            // Calculate which item should be active based on scroll progress
+            let activeIndex = Math.floor(scrollProgress * accordionItems.length);
+            activeIndex = Math.max(0, Math.min(accordionItems.length - 1, activeIndex));
 
-    // Click handlers for manual tab switching
-    carouselDots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            // Stop auto-advance when user clicks
-            if (autoAdvanceInterval) {
-                clearInterval(autoAdvanceInterval);
-                autoAdvanceInterval = null;
-            }
-            userHasInteracted = true;
-            showTab(dot.dataset.tab);
-        });
-    });
+            // Update active states
+            accordionItems.forEach((item, index) => {
+                item.classList.toggle('active', index === activeIndex);
+            });
 
-    // Auto-advance tabs (only if user hasn't interacted)
-    function startAutoAdvance() {
-        if (carouselDots.length > 0 && !userHasInteracted) {
-            autoAdvanceInterval = setInterval(() => {
-                if (!userHasInteracted) {
-                    const nextTab = (currentTab + 1) % tabs.length;
-                    showTab(tabs[nextTab]);
-                } else {
-                    clearInterval(autoAdvanceInterval);
-                }
-            }, 6000);
+            currentAccordion = activeIndex;
+            hasScrolledPast = true;
+        } else if (sectionRect.top > windowHeight && hasScrolledPast) {
+            // Reset when scrolling back up past the section
+            accordionItems.forEach(item => item.classList.remove('active'));
+            accordionItems[0].classList.add('active');
+            hasScrolledPast = false;
         }
     }
 
-    startAutoAdvance();
+    // Initial state - first item open
+    if (accordionItems.length > 0) {
+        accordionItems[0].classList.add('active');
+    }
+
+    // Update on scroll with throttling
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                updateAccordion();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    });
 
     // Simple typewriter effect for hero title
     const heroTitle = document.querySelector('.hero-title');

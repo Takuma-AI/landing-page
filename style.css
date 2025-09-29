@@ -213,87 +213,56 @@ section {
     color: var(--warm-black);
 }
 
-/* Services Tabs */
-.services-tabs {
-    margin-top: var(--space-lg);
+/* Services Accordion */
+.services-accordion {
+    margin-top: var(--space-xl);
     max-width: var(--max-width);
     margin-left: auto;
     margin-right: auto;
-    padding-top: var(--space-lg);
     border-top: 1px solid var(--light-gray);
 }
 
-/* Carousel Navigation */
-.carousel-nav {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-sm);
-    margin-top: var(--space-lg);
+.accordion-item {
+    border-bottom: 1px solid var(--light-gray);
+    transition: all 0.4s ease;
 }
 
-.carousel-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: 1px solid var(--warm-black);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.accordion-header {
+    padding: var(--space-md) 0;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--warm-black);
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+.accordion-item.active .accordion-header {
+    color: var(--ink-black);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
     padding: 0;
 }
 
-.carousel-dot:hover {
-    background: var(--light-gray);
-}
-
-.carousel-dot.active {
-    background: var(--ink-black);
-    width: 24px;
-    border-radius: 4px;
-}
-
-.tab-content {
-    position: relative;
-    min-height: 280px;
-    height: 280px;
-}
-
-.tab-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.tab-panel.active {
+.accordion-item.active .accordion-content {
+    max-height: 300px;
     opacity: 1;
-    visibility: visible;
-    position: relative;
+    padding-bottom: var(--space-lg);
 }
 
-.service-content {
-    text-align: left;
-}
-
-.tab-panel h3 {
-    margin-bottom: var(--space-md);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--ink-black);
-    text-transform: capitalize;
-}
-
-.tab-panel p {
+.accordion-content p {
     color: var(--warm-black);
     margin-bottom: var(--space-md);
     font-size: 1rem;
     line-height: 1.6;
 }
 
-.tab-panel p:last-child {
+.accordion-content p:last-child {
     margin-bottom: 0;
 }
 
@@ -648,12 +617,12 @@ footer {
         font-size: 1.125rem;
     }
 
-    .tab-panel h3 {
-        font-size: 1.4rem;
+    .accordion-header {
+        font-size: 1.15rem;
     }
 
-    .tab-panel p {
-        font-size: 1.05rem;
+    .accordion-content p {
+        font-size: 1rem;
     }
 
     .timeline-item {
