@@ -22,56 +22,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         }
     });
-    // Scroll-triggered accordion
+    // Standard click accordion
     const accordionItems = document.querySelectorAll('.accordion-item');
-    const accordionSection = document.querySelector('.services-accordion');
-    let currentAccordion = 0;
-    let hasScrolledPast = false;
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-    function updateAccordion() {
-        if (!accordionSection) return;
+    // Click handlers for accordion
+    accordionHeaders.forEach((header, index) => {
+        header.addEventListener('click', () => {
+            const item = accordionItems[index];
+            const isActive = item.classList.contains('active');
 
-        const sectionRect = accordionSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const scrollProgress = -sectionRect.top / (sectionRect.height - windowHeight/2);
-
-        // Only activate when section is in view
-        if (sectionRect.top < windowHeight * 0.7 && sectionRect.bottom > windowHeight * 0.3) {
-            // Calculate which item should be active based on scroll progress
-            let activeIndex = Math.floor(scrollProgress * accordionItems.length);
-            activeIndex = Math.max(0, Math.min(accordionItems.length - 1, activeIndex));
-
-            // Update active states
-            accordionItems.forEach((item, index) => {
-                item.classList.toggle('active', index === activeIndex);
+            // Close all items
+            accordionItems.forEach(accItem => {
+                accItem.classList.remove('active');
             });
 
-            currentAccordion = activeIndex;
-            hasScrolledPast = true;
-        } else if (sectionRect.top > windowHeight && hasScrolledPast) {
-            // Reset when scrolling back up past the section
-            accordionItems.forEach(item => item.classList.remove('active'));
-            accordionItems[0].classList.add('active');
-            hasScrolledPast = false;
-        }
-    }
+            // Open clicked item if it wasn't already open
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 
     // Initial state - first item open
     if (accordionItems.length > 0) {
         accordionItems[0].classList.add('active');
     }
-
-    // Update on scroll with throttling
-    let scrollTicking = false;
-    window.addEventListener('scroll', () => {
-        if (!scrollTicking) {
-            window.requestAnimationFrame(() => {
-                updateAccordion();
-                scrollTicking = false;
-            });
-            scrollTicking = true;
-        }
-    });
 
     // Simple typewriter effect for hero title
     const heroTitle = document.querySelector('.hero-title');

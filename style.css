@@ -233,8 +233,12 @@ section {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--warm-black);
-    cursor: default;
+    cursor: pointer;
     transition: color 0.3s ease;
+}
+
+.accordion-header:hover {
+    color: var(--ink-black);
 }
 
 .accordion-item.active .accordion-header {
