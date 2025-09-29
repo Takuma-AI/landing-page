@@ -81,9 +81,10 @@ body {
 .wordmark {
     font-size: 1.25rem;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
     color: var(--paper-white);
     transition: color 0.3s ease;
+    text-transform: lowercase;
 }
 
 .site-header.scrolled .wordmark {
