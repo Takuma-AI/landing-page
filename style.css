@@ -70,7 +70,6 @@ body {
 .site-header.scrolled {
     background-color: var(--paper-white);
     mix-blend-mode: normal;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.1);
     transform: translateY(0);
 }
 
