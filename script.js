@@ -1,4 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Header scroll behavior
+    const header = document.querySelector('.site-header');
+    let lastScrollY = 0;
+    let scrollingDown = false;
+    const secondSection = document.querySelector('.raising-bar');
+
+    function updateHeader() {
+        const currentScrollY = window.pageYOffset;
+        const secondSectionTop = secondSection ? secondSection.offsetTop : window.innerHeight;
+
+        // Determine scroll direction
+        scrollingDown = currentScrollY > lastScrollY;
+
+        // Past second section
+        if (currentScrollY > secondSectionTop) {
+            header.classList.add('scrolled');
+
+            // Show/hide based on scroll direction
+            if (scrollingDown && currentScrollY > secondSectionTop + 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+        } else {
+            // In hero section - keep original behavior
+            header.classList.remove('scrolled', 'hidden');
+        }
+
+        lastScrollY = currentScrollY;
+    }
+
+    // Throttle scroll events
+    let headerTicking = false;
+    window.addEventListener('scroll', function() {
+        if (!headerTicking) {
+            window.requestAnimationFrame(function() {
+                updateHeader();
+                headerTicking = false;
+            });
+            headerTicking = true;
+        }
+    });
+
     // One-time snap from hero to content
     let hasSnapped = false;
     let isSnapping = false;
