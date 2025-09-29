@@ -131,26 +131,26 @@ document.addEventListener('DOMContentLoaded', function() {
         endDate.setDate(startDate.getDate() + 28);
 
         // Format dates with ordinal
-        const day = startDate.getDate();
         const ordinal = (day) => {
             const s = ['th', 'st', 'nd', 'rd'];
             const v = day % 100;
             return day + (s[(v - 20) % 10] || s[v] || s[0]);
         };
-        const monthName = startDate.toLocaleDateString('en-US', { month: 'long' });
 
-        // Update start date
-        const startDateElement = document.querySelector('.start-date-tag');
+        // Update start date (October 6th span)
+        const startDay = startDate.getDate();
+        const startMonth = startDate.toLocaleDateString('en-US', { month: 'long' });
+        const startDateElement = document.querySelector('.date-emphasis');
         if (startDateElement) {
-            startDateElement.textContent = `Sprint Begins ${monthName} ${ordinal(day)}`;
+            startDateElement.textContent = `${startMonth} ${ordinal(startDay)}`;
         }
 
-        // Update end date
+        // Update end date (November 3rd span)
         const endDay = endDate.getDate();
         const endMonth = endDate.toLocaleDateString('en-US', { month: 'long' });
-        const dateEmphasis = document.querySelector('.date-emphasis');
-        if (dateEmphasis) {
-            dateEmphasis.textContent = `${endMonth} ${ordinal(endDay)}`;
+        const goldTextElement = document.querySelector('.gold-text');
+        if (goldTextElement) {
+            goldTextElement.textContent = `${endMonth} ${ordinal(endDay)}`;
         }
     }
 

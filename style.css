@@ -314,14 +314,21 @@ section {
 }
 
 .momentum {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-lg);
     font-weight: 500;
     font-size: 1.1rem;
+    color: var(--warm-black);
+}
+
+.gold-text {
+    color: var(--accent-gold);
+    font-weight: 500;
 }
 
 .date-emphasis {
     position: relative;
     display: inline-block;
+    font-weight: 500;
 }
 
 .date-emphasis::after {
