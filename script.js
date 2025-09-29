@@ -79,4 +79,43 @@ document.addEventListener('DOMContentLoaded', function() {
         // Start after a brief delay
         setTimeout(typeWriter, 500);
     }
+
+    // Dynamic dates for "Your Next Four Weeks" section
+    function updateDates() {
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+
+        // Calculate next start date (next Monday if Mon-Wed, Monday after next if Thu-Sun)
+        let daysToAdd;
+        if (dayOfWeek >= 1 && dayOfWeek <= 3) {
+            // Monday to Wednesday: next Monday
+            daysToAdd = 8 - dayOfWeek;
+        } else {
+            // Thursday to Sunday: Monday after next
+            daysToAdd = dayOfWeek === 0 ? 8 : 15 - dayOfWeek;
+        }
+
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() + daysToAdd);
+
+        const endDate = new Date(startDate);
+        endDate.setDate(startDate.getDate() + 28); // 4 weeks later
+
+        // Format dates
+        const startFormatted = startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+        const endFormatted = endDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+
+        // Update HTML
+        const startDateElement = document.querySelector('.start-date');
+        if (startDateElement) {
+            startDateElement.textContent = `Starting ${startFormatted}:`;
+        }
+
+        const momentumElement = document.querySelector('.momentum');
+        if (momentumElement) {
+            momentumElement.textContent = `By ${endFormatted}, you'll have risen above the noise with momentum you didn't know was possible.`;
+        }
+    }
+
+    updateDates();
 });

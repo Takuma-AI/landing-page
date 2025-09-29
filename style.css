@@ -23,9 +23,9 @@
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
-    --space-lg: 2.5rem;
-    --space-xl: 4rem;
-    --space-2xl: 6rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4.5rem;
 
     /* Container */
     --max-width: 720px;
@@ -104,18 +104,26 @@ p {
 
 /* Sections with condensed spacing */
 section {
-    padding: var(--space-xl) 0;
+    padding: var(--space-lg) 0;
     position: relative;
 }
 
 /* Hero Section */
 .hero {
-    min-height: 70vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
-    padding: var(--space-xl) 0;
+    padding: var(--space-lg) 0;
     background: var(--paper-white);
     margin-top: 60px; /* Space for header */
+}
+
+.tagline {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--subtle-gray);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
 }
 
 .hero-title {
@@ -171,9 +179,16 @@ section {
     line-height: 1.7;
 }
 
-/* What We Do Section */
-.what-we-do {
+/* Raising the Bar */
+.raising-bar {
     background-color: var(--paper-white);
+    padding: var(--space-lg) 0 var(--space-sm);
+}
+
+/* Services Section */
+.services-section {
+    background-color: var(--paper-white);
+    padding: 0 0 var(--space-lg);
 }
 
 .section-intro {
@@ -184,21 +199,58 @@ section {
 
 .services {
     display: grid;
-    gap: var(--space-lg);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
     margin-top: var(--space-lg);
 }
 
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}
+
+.service {
+    padding: var(--space-sm);
+    background: transparent;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .service h3 {
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .service p {
     color: var(--warm-black);
+    margin-bottom: var(--space-sm);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-/* How We Work */
-.how-we-work {
+.service p:last-child {
+    margin-bottom: 0;
+}
+
+/* Your Next Four Weeks */
+.four-weeks {
     background-color: var(--pure-white);
+    padding: var(--space-lg) 0;
+}
+
+.start-date {
+    font-weight: 500;
+    color: var(--warm-black);
+    margin-bottom: var(--space-md);
+}
+
+.momentum {
+    margin-top: var(--space-lg);
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .work-methods {
