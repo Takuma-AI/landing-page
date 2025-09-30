@@ -63,29 +63,41 @@ body {
     background-color: transparent;
     z-index: 10000;
     padding: var(--space-sm) 0;
-    mix-blend-mode: difference;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .site-header.scrolled {
-    background-color: var(--paper-white);
-    mix-blend-mode: normal;
-    transform: translateY(0);
+    background-color: #0a0a0a;
 }
 
-.site-header.hidden {
-    transform: translateY(-100%);
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.site-header.scrolled::before {
+    opacity: 0.4;
+}
+
+.site-header .container {
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
     height: 24px;
     width: auto;
     filter: none;
-    transition: filter 0.3s ease;
-}
-
-.site-header.scrolled .logo {
-    filter: invert(1);
 }
 
 /* Typography */
@@ -355,7 +367,7 @@ section {
     width: 0;
     height: 2px;
     background: var(--accent-gold);
-    animation: underlineReveal 1s ease-out 0.5s forwards;
+    animation: none;
 }
 
 @keyframes underlineReveal {
