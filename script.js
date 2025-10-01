@@ -33,56 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         }
     });
-    // Standard click accordion
-    const accordionItems = document.querySelectorAll('.accordion-item');
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-    // Click handlers for accordion
-    accordionHeaders.forEach((header, index) => {
-        header.addEventListener('click', () => {
-            const item = accordionItems[index];
-            const isActive = item.classList.contains('active');
-
-            // Close all items
-            accordionItems.forEach(accItem => {
-                accItem.classList.remove('active');
-            });
-
-            // Open clicked item if it wasn't already open
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        });
-    });
-
-    // Initial state - first item open
-    if (accordionItems.length > 0) {
-        accordionItems[0].classList.add('active');
-    }
-
-    // Simple typewriter effect for hero title
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const text = heroTitle.textContent;
-
-        // Measure and preserve height before clearing text
-        const originalHeight = heroTitle.offsetHeight;
-        heroTitle.style.minHeight = originalHeight + 'px';
-
-        heroTitle.textContent = '';
-        heroTitle.style.opacity = '1';
-
-        let index = 0;
-        function typeWriter() {
-            if (index < text.length) {
-                heroTitle.textContent += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-
-        setTimeout(typeWriter, 300);
-    }
 
     // Dynamic dates
     function updateDates() {
