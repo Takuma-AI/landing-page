@@ -64,6 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const text = heroTitle.textContent;
+
+        // Measure and preserve height before clearing text
+        const originalHeight = heroTitle.offsetHeight;
+        heroTitle.style.minHeight = originalHeight + 'px';
+
         heroTitle.textContent = '';
         heroTitle.style.opacity = '1';
 
