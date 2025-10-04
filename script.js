@@ -65,6 +65,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentBgColor = bgColor;
             }
         }
+
+        // Lock scroll at last section
+        if (desiredActiveIndex === sections.length - 1) {
+            const lastSectionRect = sections[desiredActiveIndex].getBoundingClientRect();
+            if (lastSectionRect.top <= activeZoneTop) {
+                const currentScroll = scrollContainer.scrollTop;
+                const maxPosition = lastSectionRect.top + currentScroll - activeZoneTop;
+                if (currentScroll > maxPosition) {
+                    scrollContainer.scrollTop = maxPosition;
+                }
+            }
+        }
     }
 
     // Header background and logo color on scroll

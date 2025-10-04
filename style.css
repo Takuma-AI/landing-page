@@ -195,11 +195,6 @@ body:has(.scroll-page) {
     scroll-margin-top: 40vh;
 }
 
-/* Last section needs bottom space to scroll into reveal zone */
-.scroll-section:last-child {
-    margin-bottom: 40vh;
-}
-
 /* Text sections have narrower max-width */
 .scroll-section.level-hero > div,
 .scroll-section.level-statement > div,
