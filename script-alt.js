@@ -5,23 +5,51 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.scroll-section');
     const header = document.querySelector('.site-header');
     let currentBgColor = 'black';
+    let hasReachedEnd = sessionStorage.getItem('hasReachedEnd') === 'true';
 
     if (!scrollContainer || sections.length === 0) return;
 
     // Initialize sections and background
-    sections.forEach((section, index) => {
-        if (index > 0) {
-            section.classList.add('inactive');
-        } else {
+    if (hasReachedEnd) {
+        // Show all sections if already scrolled through once
+        sections.forEach((section) => {
             section.classList.add('active');
-        }
-    });
+            section.classList.remove('inactive', 'past');
+        });
+    } else {
+        sections.forEach((section, index) => {
+            if (index > 0) {
+                section.classList.add('inactive');
+            } else {
+                section.classList.add('active');
+            }
+        });
+    }
 
     // Set initial background
     scrollPage.classList.add('bg-black');
 
     // Update active state - simple slide approach like Hashi
     function updateActiveState() {
+        // If already reached end, keep all sections visible but update background
+        if (hasReachedEnd) {
+            // Still update background based on scroll position
+            const activeZoneTop = window.innerHeight * 0.4;
+            sections.forEach((section) => {
+                const sectionRect = section.getBoundingClientRect();
+                const sectionTop = sectionRect.top;
+                if (sectionTop <= activeZoneTop && sectionTop > -sectionRect.height / 2) {
+                    const bgColor = section.dataset.bgColor;
+                    if (bgColor && currentBgColor !== bgColor) {
+                        scrollPage.classList.remove('bg-black', 'bg-white');
+                        scrollPage.classList.add(`bg-${bgColor}`);
+                        currentBgColor = bgColor;
+                    }
+                }
+            });
+            return;
+        }
+
         const activeZoneTop = window.innerHeight * 0.4; // 40% from top
         let desiredActiveIndex = -1;
         let closestDistance = Infinity;
@@ -65,16 +93,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Limit scroll at last section
+        // Check if reached the last section (CTA)
         if (desiredActiveIndex === sections.length - 1) {
-            const lastSectionRect = sections[desiredActiveIndex].getBoundingClientRect();
-            if (lastSectionRect.top <= activeZoneTop) {
-                const currentScroll = scrollContainer.scrollTop;
-                const maxPosition = lastSectionRect.top + currentScroll - activeZoneTop;
-                if (currentScroll > maxPosition) {
-                    scrollContainer.scrollTop = maxPosition;
-                }
-            }
+            hasReachedEnd = true;
+            sessionStorage.setItem('hasReachedEnd', 'true');
+
+            // Show all sections
+            sections.forEach((section) => {
+                section.classList.add('active');
+                section.classList.remove('inactive', 'past');
+            });
         }
     }
 
