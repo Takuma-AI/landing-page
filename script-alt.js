@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set initial background
     scrollPage.classList.add('bg-black');
 
-    // Update active state based on scroll
+    // Update active state based on scroll with smooth reveal
     function updateActiveState() {
-        const activeZoneTop = window.innerHeight * 0.2; // 20% from top (lower = appears sooner)
+        const activeZoneTop = window.innerHeight * 0.2; // 20% from top
+        const revealDistance = window.innerHeight * 0.3; // Start revealing 30vh before threshold
         let desiredActiveIndex = -1;
         let closestDistance = Infinity;
 
@@ -36,18 +37,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 closestDistance = distance;
                 desiredActiveIndex = index;
             }
-        });
 
-        sections.forEach((section, index) => {
-            if (index < desiredActiveIndex) {
-                section.classList.remove('active', 'inactive');
-                section.classList.add('past');
-            } else if (index === desiredActiveIndex) {
-                section.classList.add('active');
-                section.classList.remove('inactive', 'past');
-            } else {
+            // Calculate smooth reveal opacity
+            const distanceFromThreshold = sectionTop - activeZoneTop;
+
+            if (distanceFromThreshold > revealDistance) {
+                // Too far away, fully hidden
+                section.style.opacity = '0';
+                section.style.visibility = 'hidden';
                 section.classList.remove('active', 'past');
                 section.classList.add('inactive');
+            } else if (distanceFromThreshold <= 0) {
+                // Past the threshold
+                if (distanceFromThreshold > -window.innerHeight * 0.5) {
+                    // Still on screen, fade to past state
+                    const pastProgress = Math.abs(distanceFromThreshold) / (window.innerHeight * 0.5);
+                    section.style.opacity = Math.max(0.2, 1 - pastProgress * 0.8);
+                    section.classList.remove('active', 'inactive');
+                    section.classList.add('past');
+                } else {
+                    // Way past, fully faded
+                    section.style.opacity = '0.2';
+                    section.classList.remove('active', 'inactive');
+                    section.classList.add('past');
+                }
+            } else {
+                // Approaching threshold, smooth reveal
+                const progress = 1 - (distanceFromThreshold / revealDistance);
+                const opacity = Math.pow(progress, 0.7); // Ease-out curve
+                section.style.opacity = opacity.toString();
+                section.style.visibility = 'visible';
+
+                if (progress > 0.7) {
+                    section.classList.add('active');
+                    section.classList.remove('inactive', 'past');
+                } else {
+                    section.classList.remove('active', 'past');
+                    section.classList.add('inactive');
+                }
             }
         });
 
