@@ -195,11 +195,9 @@ body:has(.scroll-page) {
     scroll-margin-top: 40vh;
 }
 
-/* Last section fills viewport */
+/* Last section needs bottom space to scroll into reveal zone */
 .scroll-section:last-child {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    margin-bottom: 40vh;
 }
 
 /* Text sections have narrower max-width */
