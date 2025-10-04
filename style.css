@@ -179,8 +179,7 @@ body:has(.scroll-page) {
 .scroll-content {
     max-width: 1400px;
     margin: 0;
-    padding: 20vh var(--space-xl);
-    padding-left: var(--space-3xl);
+    padding: 20vh var(--space-3xl);
 }
 
 /* Scroll sections */
@@ -272,10 +271,6 @@ body:has(.scroll-page) {
 /* Cards layout */
 .scroll-section.level-cards {
     width: 100%;
-}
-
-.scroll-section.level-cards > div {
-    max-width: 100%; /* Cards use full width */
 }
 
 .cards-grid {
