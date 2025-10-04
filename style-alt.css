@@ -310,26 +310,25 @@ body:has(.scroll-page) {
     margin: 0;
 }
 
-/* Timeline section uses full width and flush left */
-.scroll-section.timeline-scroll-1 > div {
+/* Timeline container creates scroll distance */
+.scroll-section.timeline-container {
+    min-height: 150vh; /* Creates scroll distance for sticky effect */
+}
+
+.scroll-section.timeline-container > div {
     max-width: 100%; /* Override text constraint for timeline */
     width: 100%;
 }
 
-.scroll-section.timeline-scroll-1 .section-content {
-    max-width: 100%; /* Header flush left too */
-    margin-bottom: var(--space-md);
-}
-
-/* Sticky state for timeline */
-.scroll-section.timeline-scroll-1.is-sticky {
+.timeline-sticky-wrapper {
     position: sticky;
     top: 15vh;
     z-index: 10;
 }
 
-.scroll-section.timeline-scroll-1.is-unstuck {
-    position: relative;
+.scroll-section.timeline-container .section-content {
+    max-width: 100%; /* Header flush left too */
+    margin-bottom: var(--space-md);
 }
 
 /* Timeline grid - horizontal layout */

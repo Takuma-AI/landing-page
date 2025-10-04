@@ -150,80 +150,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 0);
     }
 
-    // Timeline progressive highlight
-    const timelineScrollSections = [
-        document.querySelector('.timeline-scroll-1'),
-        document.querySelector('.timeline-scroll-2'),
-        document.querySelector('.timeline-scroll-3'),
-        document.querySelector('.timeline-scroll-4')
-    ];
+    // Timeline progressive highlight based on container scroll
+    const timelineContainer = document.querySelector('.timeline-container');
     const timelineItems = document.querySelectorAll('.timeline-item');
     const timelineFooter = document.querySelector('.timeline-footer');
-    let timelineCompleted = false;
-    let footerShown = false;
 
     function updateTimelineHighlight() {
-        if (!timelineScrollSections[0] || timelineCompleted) return;
+        if (!timelineContainer) return;
 
-        const timelineSection = timelineScrollSections[0];
-        const timelineRect = timelineSection.getBoundingClientRect();
-        const threshold = window.innerHeight * 0.2;
+        const containerRect = timelineContainer.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        const viewportHeight = window.innerHeight;
 
-        // Determine which week to highlight based on scroll position
-        let highlightedWeek = 0;
+        // Calculate scroll progress through container (0 to 1)
+        const scrollProgress = Math.max(0, Math.min(1, (viewportHeight * 0.2 - containerTop) / (containerHeight - viewportHeight * 0.8)));
 
-        timelineScrollSections.forEach((section, index) => {
-            if (!section) return;
-            const rect = section.getBoundingClientRect();
-
-            // Each spacer triggers the next week
-            if (rect.top <= threshold) {
-                highlightedWeek = index;
-            }
-        });
-
-        // Cap at index 3 (week 4)
-        const cappedWeek = Math.min(highlightedWeek, 3);
+        // Determine which week based on progress (0-25% = week 1, 25-50% = week 2, etc)
+        let activeWeek = Math.floor(scrollProgress * 4);
+        activeWeek = Math.min(activeWeek, 3); // Cap at week 4
 
         // Update timeline items
         timelineItems.forEach((item, index) => {
             item.classList.remove('highlighted', 'completed');
 
-            if (index === cappedWeek) {
+            if (index === activeWeek) {
                 item.classList.add('highlighted');
-            } else if (index < cappedWeek) {
+            } else if (index < activeWeek) {
                 item.classList.add('completed');
             }
         });
 
-        // Show footer when week 4 completes
-        if (cappedWeek === 3 && timelineFooter && !footerShown) {
-            timelineFooter.style.opacity = '1';
-            footerShown = true;
-
-            // Unstick after a brief moment to show complete state
-            setTimeout(() => {
-                timelineSection.classList.remove('is-sticky');
-                timelineSection.classList.add('is-unstuck');
-                timelineCompleted = true;
-
-                // All weeks stay completed
-                timelineItems.forEach(item => {
-                    item.classList.remove('highlighted');
-                    item.classList.add('completed');
-                });
-            }, 400);
-        }
-
-        // Manage sticky state
-        // Stick when timeline reaches threshold and footer not shown yet
-        if (timelineRect.top <= threshold && !footerShown) {
-            timelineSection.classList.add('is-sticky');
-            timelineSection.classList.remove('is-unstuck');
-        }
-        // Not sticky yet
-        else if (timelineRect.top > threshold && !footerShown) {
-            timelineSection.classList.remove('is-sticky', 'is-unstuck');
+        // Show footer when fully scrolled through (week 4)
+        if (timelineFooter) {
+            if (activeWeek === 3 && scrollProgress > 0.75) {
+                timelineFooter.style.opacity = '1';
+            } else {
+                timelineFooter.style.opacity = '0';
+            }
         }
     }
 
