@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update active state based on scroll
     function updateActiveState() {
-        const activeZoneTop = window.innerHeight * 0.4; // 40% from top
+        const activeZoneTop = window.innerHeight * 0.3; // 30% from top (lower = appears sooner)
         let desiredActiveIndex = -1;
         let closestDistance = Infinity;
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const distance = Math.abs(sectionTop - activeZoneTop);
 
             // Find which section's top is closest to the active zone
-            if (sectionTop <= activeZoneTop + 50 && distance < closestDistance) {
+            if (sectionTop <= activeZoneTop + 100 && distance < closestDistance) {
                 closestDistance = distance;
                 desiredActiveIndex = index;
             }
