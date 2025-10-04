@@ -100,7 +100,8 @@ body {
     margin-left: 1rem;
 }
 
-.logo-wrapper:hover .logo-dropdown {
+.logo-wrapper:hover .logo-dropdown,
+.logo-wrapper.menu-open .logo-dropdown {
     opacity: 1;
     visibility: visible;
 }

@@ -10,6 +10,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Brand menu toggle for mobile
+    let menuOpen = false;
+    const logoWrapper = document.querySelector('.logo-wrapper');
+    const logo = document.querySelector('.logo');
+    const logoDropdown = document.querySelector('.logo-dropdown');
+
+    if (logo) {
+        logo.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            menuOpen = !menuOpen;
+
+            if (menuOpen) {
+                logoWrapper.classList.add('menu-open');
+            } else {
+                logoWrapper.classList.remove('menu-open');
+            }
+        });
+
+        // Prevent dropdown clicks from closing menu
+        if (logoDropdown) {
+            logoDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        // Close menu when clicking outside (use setTimeout to avoid immediate closure)
+        setTimeout(function() {
+            document.addEventListener('click', function(e) {
+                if (menuOpen && !logoWrapper.contains(e.target)) {
+                    menuOpen = false;
+                    logoWrapper.classList.remove('menu-open');
+                }
+            });
+        }, 0);
+    }
+
     // One-time snap from hero to content
     let hasSnapped = false;
     let isSnapping = false;
