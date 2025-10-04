@@ -304,7 +304,7 @@ body:has(.scroll-page) {
 }
 
 .service-card p {
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-size: 1.15rem;
     line-height: 1.6;
     color: var(--warm-black);
     margin: 0;
