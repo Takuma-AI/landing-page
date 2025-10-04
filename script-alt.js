@@ -20,61 +20,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set initial background
     scrollPage.classList.add('bg-black');
 
-    // Update active state based on scroll with smooth reveal
+    // Update active state - simple slide approach like Hashi
     function updateActiveState() {
-        const activeZoneTop = window.innerHeight * 0.2; // 20% from top
-        const revealDistance = window.innerHeight * 0.5; // Start revealing 50vh before threshold (much earlier)
+        const activeZoneTop = window.innerHeight * 0.4; // 40% from top
         let desiredActiveIndex = -1;
         let closestDistance = Infinity;
 
+        // Find which section is closest to active zone
         sections.forEach((section, index) => {
             const sectionRect = section.getBoundingClientRect();
             const sectionTop = sectionRect.top;
             const distance = Math.abs(sectionTop - activeZoneTop);
 
-            // Find which section's top is closest to the active zone
-            if (sectionTop <= activeZoneTop + 100 && distance < closestDistance) {
+            if (sectionTop <= activeZoneTop + 50 && distance < closestDistance) {
                 closestDistance = distance;
                 desiredActiveIndex = index;
             }
+        });
 
-            // Calculate smooth reveal opacity
-            const distanceFromThreshold = sectionTop - activeZoneTop;
-
-            if (distanceFromThreshold > revealDistance) {
-                // Too far away, fully hidden
-                section.style.opacity = '0';
-                section.style.visibility = 'hidden';
+        // Update section states: past, active, or inactive
+        sections.forEach((section, index) => {
+            if (index < desiredActiveIndex) {
+                // Past sections
+                section.classList.remove('active', 'inactive');
+                section.classList.add('past');
+            } else if (index === desiredActiveIndex) {
+                // Active section
+                section.classList.add('active');
+                section.classList.remove('inactive', 'past');
+            } else {
+                // Future sections
                 section.classList.remove('active', 'past');
                 section.classList.add('inactive');
-            } else if (distanceFromThreshold <= 0) {
-                // Past the threshold
-                if (distanceFromThreshold > -window.innerHeight * 0.5) {
-                    // Still on screen, fade to past state
-                    const pastProgress = Math.abs(distanceFromThreshold) / (window.innerHeight * 0.5);
-                    section.style.opacity = Math.max(0.2, 1 - pastProgress * 0.8);
-                    section.classList.remove('active', 'inactive');
-                    section.classList.add('past');
-                } else {
-                    // Way past, fully faded
-                    section.style.opacity = '0.2';
-                    section.classList.remove('active', 'inactive');
-                    section.classList.add('past');
-                }
-            } else {
-                // Approaching threshold, smooth reveal
-                const progress = 1 - (distanceFromThreshold / revealDistance);
-                const opacity = Math.pow(progress, 0.4); // Sharper curve, reaches 1.0 faster
-                section.style.opacity = opacity.toString();
-                section.style.visibility = 'visible';
-
-                if (progress > 0.5) { // Active earlier
-                    section.classList.add('active');
-                    section.classList.remove('inactive', 'past');
-                } else {
-                    section.classList.remove('active', 'past');
-                    section.classList.add('inactive');
-                }
             }
         });
 
@@ -82,9 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (desiredActiveIndex >= 0) {
             const bgColor = sections[desiredActiveIndex].dataset.bgColor;
             if (bgColor && currentBgColor !== bgColor) {
-                // Remove all bg classes
                 scrollPage.classList.remove('bg-black', 'bg-white');
-                // Add new bg class
                 scrollPage.classList.add(`bg-${bgColor}`);
                 currentBgColor = bgColor;
             }

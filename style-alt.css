@@ -189,10 +189,10 @@ body:has(.scroll-page) {
     margin-bottom: var(--space-2xl);
     display: flex;
     align-items: flex-start;
-    transition: visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     opacity: 0;
     visibility: hidden;
-    scroll-margin-top: 20vh;
+    scroll-margin-top: 40vh;
 }
 
 /* Text sections have narrower max-width */
