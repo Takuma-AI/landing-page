@@ -310,12 +310,24 @@ body:has(.scroll-page) {
     margin: 0;
 }
 
+/* Timeline section uses full width */
+.scroll-section.timeline-scroll-1 {
+    position: sticky;
+    top: 20vh;
+    z-index: 10;
+}
+
+.scroll-section.timeline-scroll-1 > div {
+    max-width: 100%; /* Override text constraint for timeline */
+}
+
 /* Timeline grid - horizontal layout */
 .timeline-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-xl);
     margin: var(--space-lg) 0;
+    width: 100%;
 }
 
 .timeline-item {

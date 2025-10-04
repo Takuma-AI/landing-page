@@ -162,20 +162,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTimelineHighlight() {
         if (!timelineScrollSections[0]) return;
 
-        const scrollY = scrollContainer.scrollTop;
-
         // Determine which week to highlight based on scroll position
         let highlightedWeek = 0;
+        const threshold = window.innerHeight * 0.2;
 
         timelineScrollSections.forEach((section, index) => {
             if (!section) return;
             const rect = section.getBoundingClientRect();
-            const threshold = window.innerHeight * 0.3;
 
+            // Each spacer triggers the next week
             if (rect.top <= threshold) {
                 highlightedWeek = index;
             }
         });
+
+        // Cap at index 3 (week 4)
+        highlightedWeek = Math.min(highlightedWeek, 3);
 
         // Update timeline items
         timelineItems.forEach((item, index) => {
