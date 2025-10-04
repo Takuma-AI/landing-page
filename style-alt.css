@@ -374,8 +374,8 @@ body:has(.scroll-page) {
 .cta-link {
     display: inline-block;
     padding: var(--space-sm) var(--space-lg);
-    background-color: var(--ink-black);
-    color: var(--paper-white);
+    background-color: var(--paper-white);
+    color: var(--ink-black);
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
@@ -384,7 +384,7 @@ body:has(.scroll-page) {
 }
 
 .cta-link:hover {
-    background-color: var(--warm-black);
+    background-color: var(--light-gray);
     transform: translateY(-2px);
 }
 
