@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Scroll-driven content controller
+    const scrollPage = document.querySelector('.scroll-page');
     const scrollContainer = document.querySelector('.scroll-container');
     const sections = document.querySelectorAll('.scroll-section');
     const header = document.querySelector('.site-header');
+    let currentBgColor = 'black';
 
     if (!scrollContainer || sections.length === 0) return;
 
-    // Initialize sections
+    // Initialize sections and background
     sections.forEach((section, index) => {
         if (index > 0) {
             section.classList.add('inactive');
@@ -14,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
             section.classList.add('active');
         }
     });
+
+    // Set initial background
+    scrollPage.classList.add('bg-black');
 
     // Update active state based on scroll
     function updateActiveState() {
@@ -45,6 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 section.classList.add('inactive');
             }
         });
+
+        // Update background based on active section
+        if (desiredActiveIndex >= 0) {
+            const bgColor = sections[desiredActiveIndex].dataset.bgColor;
+            if (bgColor && currentBgColor !== bgColor) {
+                // Remove all bg classes
+                scrollPage.classList.remove('bg-black', 'bg-white');
+                // Add new bg class
+                scrollPage.classList.add(`bg-${bgColor}`);
+                currentBgColor = bgColor;
+            }
+        }
 
         // Limit scroll at last section
         if (desiredActiveIndex === sections.length - 1) {

@@ -128,6 +128,34 @@ body:has(.scroll-page) {
     bottom: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    background: var(--ink-black);
+    transition: background-color 0.6s ease;
+}
+
+/* Background color states */
+.scroll-page.bg-black {
+    background: var(--ink-black);
+}
+
+.scroll-page.bg-black .scroll-section .section-content,
+.scroll-page.bg-black .scroll-section .section-subtitle,
+.scroll-page.bg-black .service-card h3,
+.scroll-page.bg-black .service-card p {
+    color: var(--paper-white);
+}
+
+.scroll-page.bg-white {
+    background: var(--paper-white);
+}
+
+.scroll-page.bg-white .scroll-section .section-content,
+.scroll-page.bg-white .scroll-section .section-subtitle,
+.scroll-page.bg-white .service-card h3 {
+    color: var(--ink-black);
+}
+
+.scroll-page.bg-white .service-card p {
+    color: var(--warm-black);
 }
 
 .scroll-container {
@@ -197,10 +225,6 @@ body:has(.scroll-page) {
 
 /* Font hierarchy - Hero level */
 .scroll-section.level-hero {
-    background-color: var(--ink-black);
-    margin-left: calc(-1 * var(--space-3xl));
-    margin-right: calc(-1 * var(--space-xl));
-    padding: var(--space-3xl) var(--space-3xl);
     min-height: 80vh;
     display: flex;
     align-items: center;
@@ -211,7 +235,6 @@ body:has(.scroll-page) {
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.03em;
-    color: var(--paper-white);
 }
 
 .scroll-section.level-hero .section-subtitle {
@@ -219,7 +242,6 @@ body:has(.scroll-page) {
     font-weight: 400;
     line-height: 1.5;
     margin-top: var(--space-md);
-    color: var(--paper-white);
     opacity: 0.9;
 }
 
