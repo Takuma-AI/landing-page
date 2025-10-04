@@ -310,13 +310,15 @@ body:has(.scroll-page) {
     margin: 0;
 }
 
-/* Timeline section uses full width */
+/* Timeline section uses full width and flush left */
 .scroll-section.timeline-scroll-1 > div {
     max-width: 100%; /* Override text constraint for timeline */
+    width: 100%;
 }
 
 .scroll-section.timeline-scroll-1 .section-content {
-    max-width: 900px; /* Header stays constrained */
+    max-width: 100%; /* Header flush left too */
+    margin-bottom: var(--space-md);
 }
 
 /* Sticky state for timeline */
@@ -334,7 +336,7 @@ body:has(.scroll-page) {
 .timeline-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-xl);
+    gap: var(--space-lg);
     margin: var(--space-lg) 0;
     width: 100%;
 }
@@ -342,8 +344,8 @@ body:has(.scroll-page) {
 .timeline-item {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    padding: var(--space-lg);
+    gap: var(--space-xs);
+    padding: 0;
     transition: all 0.4s ease;
     opacity: 0.4;
 }
@@ -359,10 +361,11 @@ body:has(.scroll-page) {
 .week-label {
     font-weight: 600;
     color: var(--subtle-gray);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     transition: color 0.4s ease;
+    margin-bottom: var(--space-xs);
 }
 
 .timeline-item.highlighted .week-label,
@@ -372,8 +375,8 @@ body:has(.scroll-page) {
 
 .week-desc {
     color: var(--subtle-gray);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
     transition: color 0.4s ease;
 }
 

@@ -194,18 +194,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Manage sticky state
+        const lastSpacerRect = timelineScrollSections[3] ? timelineScrollSections[3].getBoundingClientRect() : null;
+
         // Stick when timeline reaches threshold
-        if (timelineRect.top <= threshold && timelineRect.top > -100) {
+        if (timelineRect.top <= threshold && highlightedWeek < 3) {
             timelineSection.classList.add('is-sticky');
             timelineSection.classList.remove('is-unstuck');
         }
-        // Unstick when all 4 weeks are complete
-        else if (highlightedWeek >= 3 && timelineScrollSections[3]) {
-            const lastSpacerRect = timelineScrollSections[3].getBoundingClientRect();
-            if (lastSpacerRect.top <= threshold) {
-                timelineSection.classList.remove('is-sticky');
-                timelineSection.classList.add('is-unstuck');
-            }
+        // Unstick when week 4 spacer passes threshold
+        else if (highlightedWeek === 3 && lastSpacerRect && lastSpacerRect.top <= threshold - 100) {
+            timelineSection.classList.remove('is-sticky');
+            timelineSection.classList.add('is-unstuck');
         }
         // Not sticky yet
         else if (timelineRect.top > threshold) {
