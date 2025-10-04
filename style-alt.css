@@ -291,6 +291,7 @@ body:has(.scroll-page) {
 /* Cards layout */
 .scroll-section.level-cards {
     width: 100%;
+    margin-bottom: 100vh; /* Extra space before timeline to prevent overlap */
 }
 
 .scroll-section.level-cards > div {
