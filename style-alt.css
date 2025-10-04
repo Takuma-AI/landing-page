@@ -238,8 +238,8 @@ body:has(.scroll-page) {
 }
 
 .scroll-section.past {
-    opacity: 0.2;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* Font hierarchy - Hero level */
@@ -291,7 +291,6 @@ body:has(.scroll-page) {
 /* Cards layout */
 .scroll-section.level-cards {
     width: 100%;
-    margin-bottom: 100vh; /* Extra space before timeline to prevent overlap */
 }
 
 .scroll-section.level-cards > div {
