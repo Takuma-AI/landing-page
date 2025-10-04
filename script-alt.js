@@ -5,35 +5,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.scroll-section');
     const header = document.querySelector('.site-header');
     let currentBgColor = 'black';
-    let hasReachedEnd = sessionStorage.getItem('hasReachedEnd') === 'true';
+    let hasReachedEnd = false;
 
     if (!scrollContainer || sections.length === 0) return;
 
-    // Initialize sections and background
-    if (hasReachedEnd) {
-        // Show all sections if already scrolled through once
-        sections.forEach((section) => {
+    // Initialize sections with individual backgrounds
+    sections.forEach((section, index) => {
+        // Apply individual section backgrounds from the start
+        const bgColor = section.dataset.bgColor;
+        if (bgColor) {
+            section.classList.add(`section-bg-${bgColor}`);
+        }
+
+        // Set visibility states
+        if (index > 0) {
+            section.classList.add('inactive');
+        } else {
             section.classList.add('active');
-            section.classList.remove('inactive', 'past');
-            // Apply individual section backgrounds
-            const bgColor = section.dataset.bgColor;
-            if (bgColor) {
-                section.classList.add(`section-bg-${bgColor}`);
-            }
-        });
-        // Remove page-level background
-        scrollPage.style.background = 'transparent';
-    } else {
-        sections.forEach((section, index) => {
-            if (index > 0) {
-                section.classList.add('inactive');
-            } else {
-                section.classList.add('active');
-            }
-        });
-        // Set initial background
-        scrollPage.classList.add('bg-black');
-    }
+        }
+    });
+
+    // Page background transparent (sections have their own backgrounds)
+    scrollPage.style.background = 'transparent';
 
     // Update active state - simple slide approach like Hashi
     function updateActiveState() {
@@ -88,21 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check if reached the last section (CTA)
         if (desiredActiveIndex === sections.length - 1) {
             hasReachedEnd = true;
-            sessionStorage.setItem('hasReachedEnd', 'true');
 
-            // Show all sections and apply individual backgrounds
+            // Show all sections
             sections.forEach((section) => {
                 section.classList.add('active');
                 section.classList.remove('inactive', 'past');
-                const bgColor = section.dataset.bgColor;
-                if (bgColor) {
-                    section.classList.add(`section-bg-${bgColor}`);
-                }
             });
-
-            // Remove page-level background
-            scrollPage.style.background = 'transparent';
-            scrollPage.classList.remove('bg-black', 'bg-white');
         }
     }
 
@@ -114,51 +98,32 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
 
-        // Update logo color based on scroll-page or section background
+        // Update logo color based on section underneath
         const logo = header.querySelector('.logo');
         const logoDropdown = header.querySelector('.logo-dropdown');
         if (logo) {
-            if (hasReachedEnd) {
-                // Check which section is at the top
-                let topSectionBgColor = 'black';
-                sections.forEach((section) => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= 100 && rect.bottom > 100) {
-                        topSectionBgColor = section.dataset.bgColor || 'black';
-                    }
-                });
+            // Check which section is at the top
+            let topSectionBgColor = 'black';
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom > 100) {
+                    topSectionBgColor = section.dataset.bgColor || 'black';
+                }
+            });
 
-                if (topSectionBgColor === 'white') {
-                    logo.style.color = 'var(--ink-black)';
-                    if (logoDropdown) {
-                        logoDropdown.querySelectorAll('a').forEach(link => {
-                            link.style.color = 'var(--ink-black)';
-                        });
-                    }
-                } else {
-                    logo.style.color = 'var(--paper-white)';
-                    if (logoDropdown) {
-                        logoDropdown.querySelectorAll('a').forEach(link => {
-                            link.style.color = 'var(--paper-white)';
-                        });
-                    }
+            if (topSectionBgColor === 'white') {
+                logo.style.color = 'var(--ink-black)';
+                if (logoDropdown) {
+                    logoDropdown.querySelectorAll('a').forEach(link => {
+                        link.style.color = 'var(--ink-black)';
+                    });
                 }
             } else {
-                // Pre-reveal: use scroll-page background
-                if (scrollPage.classList.contains('bg-white')) {
-                    logo.style.color = 'var(--ink-black)';
-                    if (logoDropdown) {
-                        logoDropdown.querySelectorAll('a').forEach(link => {
-                            link.style.color = 'var(--ink-black)';
-                        });
-                    }
-                } else if (scrollPage.classList.contains('bg-black')) {
-                    logo.style.color = 'var(--paper-white)';
-                    if (logoDropdown) {
-                        logoDropdown.querySelectorAll('a').forEach(link => {
-                            link.style.color = 'var(--paper-white)';
-                        });
-                    }
+                logo.style.color = 'var(--paper-white)';
+                if (logoDropdown) {
+                    logoDropdown.querySelectorAll('a').forEach(link => {
+                        link.style.color = 'var(--paper-white)';
+                    });
                 }
             }
         }
