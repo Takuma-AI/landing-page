@@ -391,13 +391,13 @@ body:has(.scroll-page) {
 .contact-alt {
     margin-top: var(--space-md);
     font-size: 0.95rem;
-    color: var(--subtle-gray);
+    color: var(--paper-white);
 }
 
 .contact-alt a {
-    color: var(--ink-black);
+    color: var(--paper-white);
     text-decoration: none;
-    border-bottom: 1px solid var(--ink-black);
+    border-bottom: 1px solid var(--paper-white);
 }
 
 /* Responsive */
