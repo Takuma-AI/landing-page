@@ -89,15 +89,6 @@ body:has(.scroll-page) {
     transition: color 0.3s ease;
 }
 
-/* Logo color changes based on scroll-page background */
-.scroll-page.bg-white ~ .site-header .logo {
-    color: var(--ink-black);
-}
-
-.scroll-page.bg-black ~ .site-header .logo {
-    color: var(--paper-white);
-}
-
 .logo-dropdown {
     position: absolute;
     top: 100%;
@@ -123,15 +114,6 @@ body:has(.scroll-page) {
     text-decoration: none;
     transition: color 0.3s ease, opacity 0.3s ease;
     display: block;
-}
-
-/* Dropdown color changes based on background */
-.scroll-page.bg-white ~ .site-header .logo-dropdown a {
-    color: var(--ink-black);
-}
-
-.scroll-page.bg-black ~ .site-header .logo-dropdown a {
-    color: var(--paper-white);
 }
 
 .logo-dropdown a:hover {

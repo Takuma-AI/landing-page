@@ -78,12 +78,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Header background on scroll
+    // Header background and logo color on scroll
     function updateHeader() {
         if (window.pageYOffset > window.innerHeight * 0.1) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
+        }
+
+        // Update logo color based on scroll-page background
+        const logo = header.querySelector('.logo');
+        const logoDropdown = header.querySelector('.logo-dropdown');
+        if (logo) {
+            if (scrollPage.classList.contains('bg-white')) {
+                logo.style.color = 'var(--ink-black)';
+                if (logoDropdown) {
+                    logoDropdown.querySelectorAll('a').forEach(link => {
+                        link.style.color = 'var(--ink-black)';
+                    });
+                }
+            } else if (scrollPage.classList.contains('bg-black')) {
+                logo.style.color = 'var(--paper-white)';
+                if (logoDropdown) {
+                    logoDropdown.querySelectorAll('a').forEach(link => {
+                        link.style.color = 'var(--paper-white)';
+                    });
+                }
+            }
         }
     }
 
@@ -128,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Attach scroll listener
     scrollContainer.addEventListener('scroll', function() {
         updateActiveState();
+        updateHeader();
     });
 
     window.addEventListener('scroll', function() {
