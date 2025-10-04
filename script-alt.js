@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const viewportHeight = window.innerHeight;
 
         // Calculate scroll progress through container (0 to 1)
-        const scrollProgress = Math.max(0, Math.min(1, (viewportHeight * 0.2 - containerTop) / (containerHeight - viewportHeight * 0.8)));
+        const scrollProgress = Math.max(0, Math.min(1, (viewportHeight * 0.4 - containerTop) / (containerHeight - viewportHeight * 0.6)));
 
         // Determine which week based on progress (0-25% = week 1, 25-50% = week 2, etc)
         let activeWeek = Math.floor(scrollProgress * 4);

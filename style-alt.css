@@ -341,7 +341,7 @@ body:has(.scroll-page) {
 
 .timeline-sticky-wrapper {
     position: sticky;
-    top: 15vh;
+    top: 40vh;
     z-index: 10;
 }
 
