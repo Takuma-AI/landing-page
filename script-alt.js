@@ -155,12 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.timeline-scroll-1'),
         document.querySelector('.timeline-scroll-2'),
         document.querySelector('.timeline-scroll-3'),
-        document.querySelector('.timeline-scroll-4'),
-        document.querySelector('.timeline-scroll-5')
+        document.querySelector('.timeline-scroll-4')
     ];
     const timelineItems = document.querySelectorAll('.timeline-item');
     const timelineFooter = document.querySelector('.timeline-footer');
     let timelineCompleted = false;
+    let footerShown = false;
 
     function updateTimelineHighlight() {
         if (!timelineScrollSections[0] || timelineCompleted) return;
@@ -196,31 +196,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Show footer when all weeks complete
-        if (cappedWeek === 3 && timelineFooter) {
+        // Show footer when week 4 completes
+        if (cappedWeek === 3 && timelineFooter && !footerShown) {
             timelineFooter.style.opacity = '1';
+            footerShown = true;
+
+            // Unstick after a brief moment to show complete state
+            setTimeout(() => {
+                timelineSection.classList.remove('is-sticky');
+                timelineSection.classList.add('is-unstuck');
+                timelineCompleted = true;
+
+                // All weeks stay completed
+                timelineItems.forEach(item => {
+                    item.classList.remove('highlighted');
+                    item.classList.add('completed');
+                });
+            }, 400);
         }
 
         // Manage sticky state
-        // Stick when timeline reaches threshold and not all complete
-        if (timelineRect.top <= threshold && highlightedWeek < 4) {
+        // Stick when timeline reaches threshold and footer not shown yet
+        if (timelineRect.top <= threshold && !footerShown) {
             timelineSection.classList.add('is-sticky');
             timelineSection.classList.remove('is-unstuck');
         }
-        // Unstick and mark complete when 5th spacer passes
-        else if (highlightedWeek >= 4) {
-            timelineSection.classList.remove('is-sticky');
-            timelineSection.classList.add('is-unstuck');
-            timelineCompleted = true;
-
-            // Show all weeks complete
-            timelineItems.forEach(item => {
-                item.classList.remove('highlighted');
-                item.classList.add('completed');
-            });
-        }
         // Not sticky yet
-        else if (timelineRect.top > threshold) {
+        else if (timelineRect.top > threshold && !footerShown) {
             timelineSection.classList.remove('is-sticky', 'is-unstuck');
         }
     }
