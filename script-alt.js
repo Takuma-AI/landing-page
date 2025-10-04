@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update active state based on scroll with smooth reveal
     function updateActiveState() {
         const activeZoneTop = window.innerHeight * 0.2; // 20% from top
-        const revealDistance = window.innerHeight * 0.3; // Start revealing 30vh before threshold
+        const revealDistance = window.innerHeight * 0.15; // Start revealing 15vh before threshold (faster)
         let desiredActiveIndex = -1;
         let closestDistance = Infinity;
 
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Approaching threshold, smooth reveal
                 const progress = 1 - (distanceFromThreshold / revealDistance);
-                const opacity = Math.pow(progress, 0.7); // Ease-out curve
+                const opacity = Math.pow(progress, 0.4); // Sharper curve, reaches 1.0 faster
                 section.style.opacity = opacity.toString();
                 section.style.visibility = 'visible';
 
-                if (progress > 0.7) {
+                if (progress > 0.5) { // Active earlier
                     section.classList.add('active');
                     section.classList.remove('inactive', 'past');
                 } else {
@@ -162,9 +162,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTimelineHighlight() {
         if (!timelineScrollSections[0]) return;
 
+        const timelineSection = timelineScrollSections[0];
+        const timelineRect = timelineSection.getBoundingClientRect();
+        const threshold = window.innerHeight * 0.2;
+
         // Determine which week to highlight based on scroll position
         let highlightedWeek = 0;
-        const threshold = window.innerHeight * 0.2;
 
         timelineScrollSections.forEach((section, index) => {
             if (!section) return;
@@ -189,6 +192,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.classList.add('completed');
             }
         });
+
+        // Manage sticky state
+        // Stick when timeline reaches threshold
+        if (timelineRect.top <= threshold && timelineRect.top > -100) {
+            timelineSection.classList.add('is-sticky');
+            timelineSection.classList.remove('is-unstuck');
+        }
+        // Unstick when all 4 weeks are complete
+        else if (highlightedWeek >= 3 && timelineScrollSections[3]) {
+            const lastSpacerRect = timelineScrollSections[3].getBoundingClientRect();
+            if (lastSpacerRect.top <= threshold) {
+                timelineSection.classList.remove('is-sticky');
+                timelineSection.classList.add('is-unstuck');
+            }
+        }
+        // Not sticky yet
+        else if (timelineRect.top > threshold) {
+            timelineSection.classList.remove('is-sticky', 'is-unstuck');
+        }
     }
 
     // Attach timeline highlight to scroll
