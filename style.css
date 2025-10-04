@@ -180,7 +180,6 @@ body:has(.scroll-page) {
     max-width: 1400px;
     margin: 0;
     padding: 20vh var(--space-xl);
-    padding-bottom: 30vh;
     padding-left: var(--space-3xl);
 }
 
@@ -194,6 +193,11 @@ body:has(.scroll-page) {
     opacity: 0;
     visibility: hidden;
     scroll-margin-top: 40vh;
+}
+
+/* Last section needs extra bottom space for scroll reveal */
+.scroll-section:last-child {
+    padding-bottom: 40vh;
 }
 
 /* Text sections have narrower max-width */
