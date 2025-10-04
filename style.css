@@ -197,7 +197,7 @@ body:has(.scroll-page) {
 
 /* Last section needs extra bottom space for scroll reveal */
 .scroll-section:last-child {
-    padding-bottom: 40vh;
+    padding-bottom: 20vh;
 }
 
 /* Text sections have narrower max-width */
