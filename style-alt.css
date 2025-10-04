@@ -240,6 +240,10 @@ body:has(.scroll-page) {
 .scroll-section.past {
     opacity: 0.2;
     visibility: visible;
+}
+
+/* Freeze cards when timeline is active */
+.scroll-section.level-cards.past {
     position: sticky;
     top: 0;
 }
