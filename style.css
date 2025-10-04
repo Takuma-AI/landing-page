@@ -296,7 +296,7 @@ body:has(.scroll-page) {
 }
 
 .service-card h2 {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-size: 1.15rem;
     font-weight: 600;
     margin-bottom: var(--space-md);
     color: var(--ink-black);
@@ -394,7 +394,7 @@ body:has(.scroll-page) {
     }
 
     .service-card h2 {
-        font-size: clamp(1rem, 4vw, 1.5rem);
+        font-size: 1.15rem;
     }
 
     .timeline-grid {
