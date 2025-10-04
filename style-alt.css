@@ -310,47 +310,66 @@ body:has(.scroll-page) {
     margin: 0;
 }
 
-/* Timeline grid */
+/* Timeline grid - horizontal layout */
 .timeline-grid {
     display: grid;
-    gap: 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
     margin: var(--space-lg) 0;
 }
 
 .timeline-item {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: var(--space-lg);
-    align-items: baseline;
-    padding: var(--space-md) 0;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    transition: all 0.4s ease;
+    opacity: 0.4;
 }
 
-.timeline-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--light-gray);
+.timeline-item.highlighted {
+    opacity: 1;
+}
+
+.timeline-item.completed {
+    opacity: 1;
 }
 
 .week-label {
     font-weight: 600;
+    color: var(--subtle-gray);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.4s ease;
+}
+
+.timeline-item.highlighted .week-label,
+.timeline-item.completed .week-label {
     color: var(--ink-black);
-    font-size: 1rem;
 }
 
 .week-desc {
-    color: var(--warm-black);
-    font-size: 0.95rem;
+    color: var(--subtle-gray);
+    font-size: 0.9rem;
     line-height: 1.6;
+    transition: color 0.4s ease;
+}
+
+.timeline-item.highlighted .week-desc,
+.timeline-item.completed .week-desc {
+    color: var(--warm-black);
+}
+
+.timeline-item.highlighted .week-desc strong,
+.timeline-item.completed .week-desc strong {
+    color: var(--ink-black);
 }
 
 .week-desc strong {
-    color: var(--ink-black);
+    color: var(--subtle-gray);
     font-weight: 500;
+    transition: color 0.4s ease;
 }
 
 /* CTA Section */
@@ -399,9 +418,9 @@ body:has(.scroll-page) {
         font-size: clamp(1.5rem, 6vw, 2rem);
     }
 
-    .timeline-item {
-        grid-template-columns: 80px 1fr;
-        gap: var(--space-sm);
+    .timeline-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
     }
 
     .scroll-section.level-hero .section-content {

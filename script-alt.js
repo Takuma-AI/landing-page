@@ -112,14 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Attach scroll listener
-    scrollContainer.addEventListener('scroll', function() {
-        updateActiveState();
-    });
-
-    window.addEventListener('scroll', function() {
-        updateHeader();
-    });
 
     // Brand menu toggle
     let menuOpen = false;
@@ -158,7 +150,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 0);
     }
 
+    // Timeline progressive highlight
+    const timelineScrollSections = [
+        document.querySelector('.timeline-scroll-1'),
+        document.querySelector('.timeline-scroll-2'),
+        document.querySelector('.timeline-scroll-3'),
+        document.querySelector('.timeline-scroll-4')
+    ];
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    function updateTimelineHighlight() {
+        if (!timelineScrollSections[0]) return;
+
+        const scrollY = scrollContainer.scrollTop;
+
+        // Determine which week to highlight based on scroll position
+        let highlightedWeek = 0;
+
+        timelineScrollSections.forEach((section, index) => {
+            if (!section) return;
+            const rect = section.getBoundingClientRect();
+            const threshold = window.innerHeight * 0.3;
+
+            if (rect.top <= threshold) {
+                highlightedWeek = index;
+            }
+        });
+
+        // Update timeline items
+        timelineItems.forEach((item, index) => {
+            item.classList.remove('highlighted', 'completed');
+
+            if (index === highlightedWeek) {
+                item.classList.add('highlighted');
+            } else if (index < highlightedWeek) {
+                item.classList.add('completed');
+            }
+        });
+    }
+
+    // Attach timeline highlight to scroll
+    scrollContainer.addEventListener('scroll', function() {
+        updateActiveState();
+        updateTimelineHighlight();
+    });
+
+    window.addEventListener('scroll', function() {
+        updateHeader();
+    });
+
     // Initial state
     updateActiveState();
     updateHeader();
+    updateTimelineHighlight();
 });
