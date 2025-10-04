@@ -394,7 +394,7 @@ body:has(.scroll-page) {
     }
 
     .service-card h2 {
-        font-size: clamp(1.5rem, 5vw, 2rem);
+        font-size: clamp(1rem, 4vw, 1.5rem);
     }
 
     .timeline-grid {
@@ -407,7 +407,7 @@ body:has(.scroll-page) {
     }
 
     .scroll-section.level-statement .section-content {
-        font-size: clamp(1.5rem, 5vw, 2rem);
+        font-size: clamp(1.75rem, 6vw, 2.25rem);
     }
 
     .scroll-section.level-section .section-content {
