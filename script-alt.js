@@ -15,7 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
         sections.forEach((section) => {
             section.classList.add('active');
             section.classList.remove('inactive', 'past');
+            // Apply individual section backgrounds
+            const bgColor = section.dataset.bgColor;
+            if (bgColor) {
+                section.classList.add(`section-bg-${bgColor}`);
+            }
         });
+        // Remove page-level background
+        scrollPage.style.background = 'transparent';
     } else {
         sections.forEach((section, index) => {
             if (index > 0) {
@@ -24,29 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 section.classList.add('active');
             }
         });
+        // Set initial background
+        scrollPage.classList.add('bg-black');
     }
-
-    // Set initial background
-    scrollPage.classList.add('bg-black');
 
     // Update active state - simple slide approach like Hashi
     function updateActiveState() {
-        // If already reached end, keep all sections visible but update background
+        // If already reached end, keep all sections visible
         if (hasReachedEnd) {
-            // Still update background based on scroll position
-            const activeZoneTop = window.innerHeight * 0.4;
-            sections.forEach((section) => {
-                const sectionRect = section.getBoundingClientRect();
-                const sectionTop = sectionRect.top;
-                if (sectionTop <= activeZoneTop && sectionTop > -sectionRect.height / 2) {
-                    const bgColor = section.dataset.bgColor;
-                    if (bgColor && currentBgColor !== bgColor) {
-                        scrollPage.classList.remove('bg-black', 'bg-white');
-                        scrollPage.classList.add(`bg-${bgColor}`);
-                        currentBgColor = bgColor;
-                    }
-                }
-            });
             return;
         }
 
@@ -98,11 +90,19 @@ document.addEventListener('DOMContentLoaded', function() {
             hasReachedEnd = true;
             sessionStorage.setItem('hasReachedEnd', 'true');
 
-            // Show all sections
+            // Show all sections and apply individual backgrounds
             sections.forEach((section) => {
                 section.classList.add('active');
                 section.classList.remove('inactive', 'past');
+                const bgColor = section.dataset.bgColor;
+                if (bgColor) {
+                    section.classList.add(`section-bg-${bgColor}`);
+                }
             });
+
+            // Remove page-level background
+            scrollPage.style.background = 'transparent';
+            scrollPage.classList.remove('bg-black', 'bg-white');
         }
     }
 
@@ -114,23 +114,51 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
 
-        // Update logo color based on scroll-page background
+        // Update logo color based on scroll-page or section background
         const logo = header.querySelector('.logo');
         const logoDropdown = header.querySelector('.logo-dropdown');
         if (logo) {
-            if (scrollPage.classList.contains('bg-white')) {
-                logo.style.color = 'var(--ink-black)';
-                if (logoDropdown) {
-                    logoDropdown.querySelectorAll('a').forEach(link => {
-                        link.style.color = 'var(--ink-black)';
-                    });
+            if (hasReachedEnd) {
+                // Check which section is at the top
+                let topSectionBgColor = 'black';
+                sections.forEach((section) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom > 100) {
+                        topSectionBgColor = section.dataset.bgColor || 'black';
+                    }
+                });
+
+                if (topSectionBgColor === 'white') {
+                    logo.style.color = 'var(--ink-black)';
+                    if (logoDropdown) {
+                        logoDropdown.querySelectorAll('a').forEach(link => {
+                            link.style.color = 'var(--ink-black)';
+                        });
+                    }
+                } else {
+                    logo.style.color = 'var(--paper-white)';
+                    if (logoDropdown) {
+                        logoDropdown.querySelectorAll('a').forEach(link => {
+                            link.style.color = 'var(--paper-white)';
+                        });
+                    }
                 }
-            } else if (scrollPage.classList.contains('bg-black')) {
-                logo.style.color = 'var(--paper-white)';
-                if (logoDropdown) {
-                    logoDropdown.querySelectorAll('a').forEach(link => {
-                        link.style.color = 'var(--paper-white)';
-                    });
+            } else {
+                // Pre-reveal: use scroll-page background
+                if (scrollPage.classList.contains('bg-white')) {
+                    logo.style.color = 'var(--ink-black)';
+                    if (logoDropdown) {
+                        logoDropdown.querySelectorAll('a').forEach(link => {
+                            link.style.color = 'var(--ink-black)';
+                        });
+                    }
+                } else if (scrollPage.classList.contains('bg-black')) {
+                    logo.style.color = 'var(--paper-white)';
+                    if (logoDropdown) {
+                        logoDropdown.querySelectorAll('a').forEach(link => {
+                            link.style.color = 'var(--paper-white)';
+                        });
+                    }
                 }
             }
         }
