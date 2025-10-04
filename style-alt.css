@@ -313,12 +313,16 @@ body:has(.scroll-page) {
 /* Timeline section uses full width */
 .scroll-section.timeline-scroll-1 {
     position: sticky;
-    top: 20vh;
+    top: 15vh;
     z-index: 10;
 }
 
 .scroll-section.timeline-scroll-1 > div {
     max-width: 100%; /* Override text constraint for timeline */
+}
+
+.scroll-section.timeline-scroll-1 .section-content {
+    max-width: 900px; /* Header stays constrained */
 }
 
 /* Timeline grid - horizontal layout */
