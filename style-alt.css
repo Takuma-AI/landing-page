@@ -159,35 +159,6 @@ body:has(.scroll-page) {
     color: var(--warm-black);
 }
 
-/* Post-reveal: sections have individual backgrounds */
-.scroll-section.section-bg-black {
-    background: var(--ink-black);
-}
-
-.scroll-section.section-bg-black .section-content,
-.scroll-section.section-bg-black .section-subtitle,
-.scroll-section.section-bg-black .service-card h3,
-.scroll-section.section-bg-black .service-card p,
-.scroll-section.section-bg-black .week-label,
-.scroll-section.section-bg-black .week-desc,
-.scroll-section.section-bg-black .week-desc strong {
-    color: var(--paper-white);
-}
-
-.scroll-section.section-bg-white {
-    background: var(--paper-white);
-}
-
-.scroll-section.section-bg-white .section-content,
-.scroll-section.section-bg-white .section-subtitle,
-.scroll-section.section-bg-white .service-card h3 {
-    color: var(--ink-black);
-}
-
-.scroll-section.section-bg-white .service-card p {
-    color: var(--warm-black);
-}
-
 .scroll-container {
     height: 100vh;
     overflow-y: scroll;

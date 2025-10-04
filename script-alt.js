@@ -5,19 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.scroll-section');
     const header = document.querySelector('.site-header');
     let currentBgColor = 'black';
-    let hasReachedEnd = false;
 
     if (!scrollContainer || sections.length === 0) return;
 
-    // Initialize sections with individual backgrounds
+    // Initialize sections and background
     sections.forEach((section, index) => {
-        // Apply individual section backgrounds from the start
-        const bgColor = section.dataset.bgColor;
-        if (bgColor) {
-            section.classList.add(`section-bg-${bgColor}`);
-        }
-
-        // Set visibility states
         if (index > 0) {
             section.classList.add('inactive');
         } else {
@@ -25,15 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Page background transparent (sections have their own backgrounds)
-    scrollPage.style.background = 'transparent';
+    // Set initial background
+    scrollPage.classList.add('bg-black');
 
     // Update active state - simple slide approach like Hashi
     function updateActiveState() {
-        // If already reached end, keep all sections visible
-        if (hasReachedEnd) {
-            return;
-        }
 
         const activeZoneTop = window.innerHeight * 0.4; // 40% from top
         let desiredActiveIndex = -1;
@@ -77,17 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentBgColor = bgColor;
             }
         }
-
-        // Check if reached the last section (CTA)
-        if (desiredActiveIndex === sections.length - 1) {
-            hasReachedEnd = true;
-
-            // Show all sections
-            sections.forEach((section) => {
-                section.classList.add('active');
-                section.classList.remove('inactive', 'past');
-            });
-        }
     }
 
     // Header background and logo color on scroll
@@ -98,27 +75,18 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
 
-        // Update logo color based on section underneath
+        // Update logo color based on scroll-page background
         const logo = header.querySelector('.logo');
         const logoDropdown = header.querySelector('.logo-dropdown');
         if (logo) {
-            // Check which section is at the top
-            let topSectionBgColor = 'black';
-            sections.forEach((section) => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 100 && rect.bottom > 100) {
-                    topSectionBgColor = section.dataset.bgColor || 'black';
-                }
-            });
-
-            if (topSectionBgColor === 'white') {
+            if (scrollPage.classList.contains('bg-white')) {
                 logo.style.color = 'var(--ink-black)';
                 if (logoDropdown) {
                     logoDropdown.querySelectorAll('a').forEach(link => {
                         link.style.color = 'var(--ink-black)';
                     });
                 }
-            } else {
+            } else if (scrollPage.classList.contains('bg-black')) {
                 logo.style.color = 'var(--paper-white)';
                 if (logoDropdown) {
                     logoDropdown.querySelectorAll('a').forEach(link => {
