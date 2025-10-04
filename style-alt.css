@@ -186,7 +186,7 @@ body:has(.scroll-page) {
 /* Scroll sections */
 .scroll-section {
     padding: var(--space-md) 0;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
     display: flex;
     align-items: flex-start;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -225,7 +225,7 @@ body:has(.scroll-page) {
 
 /* Font hierarchy - Hero level */
 .scroll-section.level-hero {
-    min-height: 80vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
 }
