@@ -157,7 +157,51 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHeader();
     });
 
+    // Dynamic dates
+    function updateDates() {
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+
+        // Calculate next Monday
+        let daysToAdd;
+        if (dayOfWeek >= 1 && dayOfWeek <= 3) {
+            daysToAdd = 8 - dayOfWeek;
+        } else {
+            daysToAdd = dayOfWeek === 0 ? 8 : 15 - dayOfWeek;
+        }
+
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() + daysToAdd);
+
+        const endDate = new Date(startDate);
+        endDate.setDate(startDate.getDate() + 28);
+
+        // Format dates with ordinal
+        const ordinal = (day) => {
+            const s = ['th', 'st', 'nd', 'rd'];
+            const v = day % 100;
+            return day + (s[(v - 20) % 10] || s[v] || s[0]);
+        };
+
+        // Update start date
+        const startDay = startDate.getDate();
+        const startMonth = startDate.toLocaleDateString('en-US', { month: 'long' });
+        const startDateElement = document.querySelector('.start-date');
+        if (startDateElement) {
+            startDateElement.textContent = `${startMonth} ${ordinal(startDay)}`;
+        }
+
+        // Update end date
+        const endDay = endDate.getDate();
+        const endMonth = endDate.toLocaleDateString('en-US', { month: 'long' });
+        const endDateElement = document.querySelector('.end-date');
+        if (endDateElement) {
+            endDateElement.textContent = `${endMonth} ${ordinal(endDay)}`;
+        }
+    }
+
     // Initial state
     updateActiveState();
     updateHeader();
+    updateDates();
 });
