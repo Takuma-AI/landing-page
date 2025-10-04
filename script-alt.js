@@ -125,51 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 0);
     }
 
-    // Timeline progressive highlight based on container scroll
-    const timelineContainer = document.querySelector('.timeline-container');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineFooter = document.querySelector('.timeline-footer');
-
-    function updateTimelineHighlight() {
-        if (!timelineContainer) return;
-
-        const containerRect = timelineContainer.getBoundingClientRect();
-        const containerTop = containerRect.top;
-        const containerHeight = containerRect.height;
-        const viewportHeight = window.innerHeight;
-
-        // Calculate scroll progress through container (0 to 1)
-        const scrollProgress = Math.max(0, Math.min(1, (viewportHeight * 0.4 - containerTop) / (containerHeight - viewportHeight * 0.6)));
-
-        // Determine which week based on progress (0-25% = week 1, 25-50% = week 2, etc)
-        let activeWeek = Math.floor(scrollProgress * 4);
-        activeWeek = Math.min(activeWeek, 3); // Cap at week 4
-
-        // Update timeline items
-        timelineItems.forEach((item, index) => {
-            item.classList.remove('highlighted', 'completed');
-
-            if (index === activeWeek) {
-                item.classList.add('highlighted');
-            } else if (index < activeWeek) {
-                item.classList.add('completed');
-            }
-        });
-
-        // Show footer when fully scrolled through (week 4)
-        if (timelineFooter) {
-            if (activeWeek === 3 && scrollProgress > 0.75) {
-                timelineFooter.style.opacity = '1';
-            } else {
-                timelineFooter.style.opacity = '0';
-            }
-        }
-    }
-
-    // Attach timeline highlight to scroll
+    // Attach scroll listener
     scrollContainer.addEventListener('scroll', function() {
         updateActiveState();
-        updateTimelineHighlight();
     });
 
     window.addEventListener('scroll', function() {
@@ -179,5 +137,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial state
     updateActiveState();
     updateHeader();
-    updateTimelineHighlight();
 });

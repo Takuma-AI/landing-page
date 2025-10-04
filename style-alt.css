@@ -242,12 +242,6 @@ body:has(.scroll-page) {
     visibility: visible;
 }
 
-/* Freeze cards when timeline is active */
-.scroll-section.level-cards.past {
-    position: sticky;
-    top: 0;
-}
-
 /* Font hierarchy - Hero level */
 .scroll-section.level-hero {
     min-height: 60vh;
@@ -335,25 +329,9 @@ body:has(.scroll-page) {
     margin: 0;
 }
 
-/* Timeline container creates scroll distance */
-.scroll-section.timeline-container {
-    min-height: 100vh; /* Creates scroll distance for sticky effect */
-}
-
-.scroll-section.timeline-container > div {
-    max-width: 100%; /* Override text constraint for timeline */
-    width: 100%;
-}
-
-.timeline-sticky-wrapper {
-    position: sticky;
-    top: 40vh;
-    z-index: 10;
-}
-
-.scroll-section.timeline-container .section-content {
-    max-width: 100%; /* Header flush left too */
-    margin-bottom: var(--space-md);
+/* Timeline section full width */
+.scroll-section.level-section > div {
+    max-width: 100%;
 }
 
 /* Timeline grid - horizontal layout */
@@ -370,54 +348,26 @@ body:has(.scroll-page) {
     flex-direction: column;
     gap: var(--space-xs);
     padding: 0;
-    transition: all 0.4s ease;
-    opacity: 0.4;
-}
-
-.timeline-item.highlighted {
-    opacity: 1;
-}
-
-.timeline-item.completed {
-    opacity: 1;
 }
 
 .week-label {
     font-weight: 600;
-    color: var(--subtle-gray);
+    color: var(--ink-black);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    transition: color 0.4s ease;
     margin-bottom: var(--space-xs);
 }
 
-.timeline-item.highlighted .week-label,
-.timeline-item.completed .week-label {
-    color: var(--ink-black);
-}
-
 .week-desc {
-    color: var(--subtle-gray);
+    color: var(--warm-black);
     font-size: 1rem;
     line-height: 1.5;
-    transition: color 0.4s ease;
-}
-
-.timeline-item.highlighted .week-desc,
-.timeline-item.completed .week-desc {
-    color: var(--warm-black);
-}
-
-.timeline-item.highlighted .week-desc strong,
-.timeline-item.completed .week-desc strong {
-    color: var(--ink-black);
 }
 
 .week-desc strong {
-    color: var(--subtle-gray);
+    color: var(--ink-black);
     font-weight: 500;
-    transition: color 0.4s ease;
 }
 
 /* CTA Section */
