@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update active state based on scroll with smooth reveal
     function updateActiveState() {
         const activeZoneTop = window.innerHeight * 0.2; // 20% from top
-        const revealDistance = window.innerHeight * 0.15; // Start revealing 15vh before threshold (faster)
+        const revealDistance = window.innerHeight * 0.5; // Start revealing 50vh before threshold (much earlier)
         let desiredActiveIndex = -1;
         let closestDistance = Infinity;
 
@@ -201,8 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
             timelineSection.classList.add('is-sticky');
             timelineSection.classList.remove('is-unstuck');
         }
-        // Unstick when week 4 spacer passes threshold
-        else if (highlightedWeek === 3 && lastSpacerRect && lastSpacerRect.top <= threshold - 100) {
+        // Unstick as soon as week 4 is highlighted (much faster)
+        else if (highlightedWeek === 3) {
             timelineSection.classList.remove('is-sticky');
             timelineSection.classList.add('is-unstuck');
         }
