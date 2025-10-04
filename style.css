@@ -180,7 +180,7 @@ body:has(.scroll-page) {
     max-width: 1400px;
     margin: 0;
     padding: 20vh var(--space-xl);
-    padding-bottom: 10vh;
+    padding-bottom: 30vh;
     padding-left: var(--space-3xl);
 }
 
