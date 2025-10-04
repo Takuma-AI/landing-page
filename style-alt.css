@@ -177,42 +177,31 @@ body:has(.scroll-page) {
 }
 
 .scroll-content {
-    width: 100%;
+    max-width: 1400px;
     margin: 0;
-    padding: 0;
+    padding: 20vh var(--space-xl);
+    padding-bottom: 50vh;
+    padding-left: var(--space-3xl);
 }
 
 /* Scroll sections */
 .scroll-section {
-    padding: var(--space-3xl) 0;
-    margin: 0;
+    padding: var(--space-md) 0;
+    margin-bottom: var(--space-2xl);
     display: flex;
     align-items: flex-start;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     opacity: 0;
     visibility: hidden;
-    min-height: 100vh;
-    width: 100%;
-}
-
-/* Content wrappers inside sections */
-.scroll-section > div {
-    max-width: 1400px;
-    width: 100%;
-    padding: 0 var(--space-3xl);
-    margin: 0 auto;
+    scroll-margin-top: 40vh;
 }
 
 /* Text sections have narrower max-width */
 .scroll-section.level-hero > div,
 .scroll-section.level-statement > div,
+.scroll-section.level-section > div,
 .scroll-section.level-body > div {
     max-width: 900px;
-}
-
-/* Section headers (timeline) full width */
-.scroll-section.level-section > div {
-    max-width: 1400px;
 }
 
 .scroll-section:first-child {
@@ -237,9 +226,9 @@ body:has(.scroll-page) {
 
 /* Font hierarchy - Hero level */
 .scroll-section.level-hero {
+    min-height: 60vh;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .scroll-section.level-hero .section-content {
@@ -282,8 +271,12 @@ body:has(.scroll-page) {
 }
 
 /* Cards layout */
+.scroll-section.level-cards {
+    width: 100%;
+}
+
 .scroll-section.level-cards > div {
-    max-width: 1400px;
+    max-width: 100%; /* Cards use full width */
 }
 
 .cards-grid {
@@ -316,6 +309,11 @@ body:has(.scroll-page) {
     line-height: 1.6;
     color: var(--warm-black);
     margin: 0;
+}
+
+/* Timeline section full width */
+.scroll-section.level-section > div {
+    max-width: 100%;
 }
 
 /* Timeline grid - horizontal layout */
