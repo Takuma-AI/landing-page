@@ -241,12 +241,12 @@ h2 {
 .timeline-footer {
     font-size: 0.9375rem;
     line-height: 1.6;
-    color: var(--paper-white);
+    color: var(--warm-black);
     padding-top: var(--space-md);
 }
 
 .timeline-footer strong {
-    color: var(--paper-white);
+    color: var(--ink-black);
     font-weight: 600;
 }
 
