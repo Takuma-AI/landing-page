@@ -276,14 +276,12 @@ body:has(.scroll-page) {
     font-size: 1.15rem;
     font-weight: 600;
     margin-bottom: var(--space-md);
-    color: var(--ink-black);
     letter-spacing: 0.02em;
 }
 
 .service-card p {
     font-size: 1.15rem;
     line-height: 1.6;
-    color: var(--warm-black);
     margin: 0;
 }
 
