@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollContainer = document.querySelector('.scroll-container');
     const sections = document.querySelectorAll('.scroll-section');
     const header = document.querySelector('.site-header');
-    let currentBgColor = 'black';
 
     if (!scrollContainer || sections.length === 0) return;
 
@@ -56,15 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update background based on active section
-        if (desiredActiveIndex >= 0) {
-            const bgColor = sections[desiredActiveIndex].dataset.bgColor;
-            if (bgColor && currentBgColor !== bgColor) {
-                scrollPage.classList.remove('bg-black', 'bg-white');
-                scrollPage.classList.add(`bg-${bgColor}`);
-                currentBgColor = bgColor;
-            }
-        }
+        // Keep background black throughout (no color switching)
 
         // Lock scroll at last section
         if (desiredActiveIndex === sections.length - 1) {
@@ -87,24 +78,15 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
 
-        // Update logo color based on scroll-page background
+        // Logo stays white (background is always black)
         const logo = header.querySelector('.logo');
         const logoDropdown = header.querySelector('.logo-dropdown');
         if (logo) {
-            if (scrollPage.classList.contains('bg-white')) {
-                logo.style.color = 'var(--ink-black)';
-                if (logoDropdown) {
-                    logoDropdown.querySelectorAll('a').forEach(link => {
-                        link.style.color = 'var(--ink-black)';
-                    });
-                }
-            } else if (scrollPage.classList.contains('bg-black')) {
-                logo.style.color = 'var(--paper-white)';
-                if (logoDropdown) {
-                    logoDropdown.querySelectorAll('a').forEach(link => {
-                        link.style.color = 'var(--paper-white)';
-                    });
-                }
+            logo.style.color = 'var(--paper-white)';
+            if (logoDropdown) {
+                logoDropdown.querySelectorAll('a').forEach(link => {
+                    link.style.color = 'var(--paper-white)';
+                });
             }
         }
     }
