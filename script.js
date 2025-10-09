@@ -86,6 +86,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Calendly button handler
+    const calendlyButton = document.querySelector('.cta-button');
+    if (calendlyButton) {
+        calendlyButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({url: 'https://calendly.com/kateleext/takuma'});
+            }
+        });
+    }
+
     updateHeader();
     updateDates();
 });
