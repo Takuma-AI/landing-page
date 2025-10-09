@@ -252,12 +252,18 @@ h2 {
 .cta-section {
     background-color: var(--ink-black);
     color: var(--paper-white);
-    padding: var(--space-lg);
+    padding: var(--space-xl) var(--space-md);
     margin-top: var(--space-2xl);
+}
+
+.cta-section-inner {
+    max-width: 580px;
+    margin: 0 auto;
 }
 
 .cta-section h2 {
     margin-bottom: var(--space-sm);
+    color: var(--paper-white);
 }
 
 .cta-description {
