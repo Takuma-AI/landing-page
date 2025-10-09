@@ -217,11 +217,6 @@ body:has(.scroll-page) {
     visibility: hidden;
 }
 
-.scroll-section.past {
-    opacity: 0.2;
-    visibility: visible;
-}
-
 /* Font hierarchy - Hero level */
 .scroll-section.level-hero {
     min-height: 60vh;

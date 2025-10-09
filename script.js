@@ -39,18 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update section states: past, active, or inactive
+        // Update section states: past/active stay visible, inactive hidden
         sections.forEach((section, index) => {
-            if (index < desiredActiveIndex) {
-                // Past sections
-                section.classList.remove('active', 'inactive');
-                section.classList.add('past');
-            } else if (index === desiredActiveIndex) {
-                // Active section
+            if (index <= desiredActiveIndex) {
+                // Past and active sections - keep visible
                 section.classList.add('active');
                 section.classList.remove('inactive', 'past');
             } else {
-                // Future sections
+                // Future sections - hidden
                 section.classList.remove('active', 'past');
                 section.classList.add('inactive');
             }
