@@ -45,9 +45,9 @@ body {
 
 /* Unified Takuma Navigation */
 .takuma-nav {
-    position: fixed;
-    top: 24px;
-    left: 24px;
+    position: sticky;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -60,6 +60,8 @@ body {
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.2s ease;
+    padding: 24px;
+    background-color: var(--paper-white);
 }
 
 .takuma-nav.loaded {
@@ -200,7 +202,7 @@ body {
 
 /* Main Content */
 .page-content {
-    padding-top: 100px;
+    padding-top: 120px;
     padding-bottom: var(--space-2xl);
 }
 
@@ -333,7 +335,7 @@ h2 {
     background-color: var(--ink-black);
     color: var(--paper-white);
     padding: var(--space-xl);
-    margin: var(--space-2xl) calc(-1 * var(--space-xl)) 0;
+    margin: var(--space-2xl) calc(-1 * var(--space-xl)) calc(-1 * var(--space-2xl));
 }
 
 .cta-section h2 {
@@ -423,7 +425,7 @@ h2 {
     }
 
     h1 {
-        font-size: clamp(1.75rem, 6vw, 2.25rem);
+        font-size: clamp(2.625rem, 9vw, 3.375rem);
     }
 
     .statement {
@@ -432,5 +434,9 @@ h2 {
 
     .timeline-grid {
         gap: var(--space-lg);
+    }
+
+    .cta-section {
+        padding-bottom: var(--space-2xl);
     }
 }

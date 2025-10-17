@@ -3,14 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Header background on scroll
     function updateHeader() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
     }
 
-    window.addEventListener('scroll', updateHeader);
+    if (header) {
+        window.addEventListener('scroll', updateHeader);
+    }
 
     // Brand menu toggle
     let menuOpen = false;
@@ -160,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navDots = document.querySelectorAll('.card-nav-dot');
     let currentCard = 0;
 
+
     function showCard(index) {
         // Remove active from all
         timelineCards.forEach(card => card.classList.remove('active'));
@@ -228,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    updateHeader();
+    if (header) {
+        updateHeader();
+    }
     updateDates();
 });

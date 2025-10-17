@@ -1,11 +1,11 @@
 /* Letter Page Background */
 body:has(.letter-content) {
-  background-color: #e8e8e8;
+  background-color: #fafaf8;
 }
 
 /* Letter Layout */
 .letter-content {
-  max-width: 650px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 120px var(--space-xl) var(--space-3xl) var(--space-xl);
   min-height: 100vh;
@@ -13,33 +13,21 @@ body:has(.letter-content) {
 
 /* Letter Envelope */
 .letter-envelope {
-  background-color: #ffffff;
-  border: 2px solid var(--ink-black);
-  padding: var(--space-lg) var(--space-xl);
-  margin-bottom: var(--space-3xl);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: var(--space-2xl);
   position: relative;
 }
 
-.letter-envelope::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid var(--ink-black);
-  margin: 6px;
-  pointer-events: none;
-}
-
 .envelope-text {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   color: var(--ink-black);
-  text-align: center;
+  text-align: left;
+  margin-bottom: var(--space-2xl);
 }
 
 .letter-body {
@@ -47,8 +35,8 @@ body:has(.letter-content) {
 }
 
 .letter-greeting {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
   line-height: 1.8;
   margin-bottom: var(--space-lg);
   color: var(--ink-black);
@@ -56,28 +44,34 @@ body:has(.letter-content) {
 }
 
 .letter-para {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
   line-height: 1.8;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   color: var(--ink-black);
   font-weight: 400;
 }
 
-.letter-opening {
-  font-size: 1.125rem;
+/* Highlight */
+.highlight {
   font-weight: 600;
+}
+
+.letter-opening {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
   color: var(--ink-black);
   margin-bottom: var(--space-lg);
 }
 
 .letter-intro {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.9375rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--ink-black);
   margin-bottom: var(--space-md);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
 }
 
 .letter-para em {
@@ -108,164 +102,105 @@ body:has(.letter-content) {
   opacity: 0.4;
 }
 
-/* Swipeable Timeline Cards */
+/* Timeline Section */
 .timeline-card-container {
-  margin: var(--space-lg) 0 var(--space-2xl) 0;
-  position: relative;
-  min-height: 450px;
+  margin: var(--space-lg) 0;
+  background-color: #f5f5f3;
+  padding: var(--space-xl);
+  border-radius: 4px;
 }
 
-.timeline-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  padding: var(--space-lg) var(--space-md);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.timeline-card.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.timeline-card-title {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--ink-black);
-  margin: 0 0 var(--space-md) 0;
-  padding-bottom: var(--space-xs);
-  border-bottom: 1px solid var(--light-gray);
-}
-
-/* Card navigation dots */
+/* Timeline Tabs */
 .card-nav {
   display: flex;
-  gap: var(--space-xs);
-  justify-content: center;
-  margin-top: var(--space-md);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
 }
 
 .card-nav-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--ink-black);
-  opacity: 0.2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--ink-black);
+  opacity: 0.3;
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
-  padding: 0;
+  background: none;
+  padding: 0 0 4px 0;
+  border-bottom: 2px solid transparent;
 }
 
 .card-nav-dot:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .card-nav-dot.active {
-  background-color: var(--ink-black);
   opacity: 1;
+  border-bottom-color: var(--ink-black);
+}
+
+/* Timeline Cards */
+.timeline-card {
+  display: none;
+}
+
+.timeline-card.active {
+  display: block;
 }
 
 .timeline-context {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.875rem;
-  line-height: 1.7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
   color: var(--ink-black);
   font-weight: 400;
   margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--light-gray);
 }
 
-.timeline-week {
-  margin-bottom: var(--space-md);
-  display: flex;
-  gap: var(--space-md);
-  align-items: baseline;
+/* Timeline List */
+.timeline-list {
+  list-style: disc;
+  margin: 0 0 var(--space-lg) var(--space-lg);
+  padding: 0;
 }
 
-.week-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 600;
+.timeline-list li {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
   color: var(--ink-black);
-  opacity: 0.7;
-  white-space: nowrap;
-  min-width: 60px;
-}
-
-.timeline-week p {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--ink-black);
-  margin: 0;
+  margin-bottom: var(--space-lg);
   font-weight: 400;
 }
 
-.timeline-footer {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--ink-black);
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-2xl);
-  font-weight: 400;
-}
-
-.timeline-footer strong {
-  color: var(--ink-black);
-  font-weight: 600;
-}
-
-/* CTA within letter */
-.letter-cta {
-  margin: var(--space-xl) 0 var(--space-2xl) 0;
-}
-
+/* CTA Button */
 .cta-button-letter {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   display: inline-block;
-  padding: 12px 24px;
+  padding: 14px 28px;
   background-color: var(--ink-black);
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.9375rem;
-  transition: opacity 0.2s ease;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+  transition: background-color 0.2s ease;
   border-radius: 0;
-  border: 2px solid var(--ink-black);
+  border: none;
 }
 
 .cta-button-letter:hover {
-  opacity: 0.85;
+  background-color: #2d2d2d;
 }
 
-/* Signature */
-.letter-signature {
-  margin-top: var(--space-lg);
-}
-
-.letter-signature p {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--ink-black);
-  margin: 0;
-  font-weight: 400;
-}
-
+/* Signature Title */
 .signature-title {
-  font-size: 0.8125rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0;
   color: var(--ink-black);
-  opacity: 0.6;
+  opacity: 0.5;
   font-weight: 400;
 }
 
@@ -275,21 +210,15 @@ body:has(.letter-content) {
     padding: 100px var(--space-md) var(--space-2xl) var(--space-md);
   }
 
-  .letter-para,
-  .letter-list li {
-    font-size: 1rem;
-  }
-
   .timeline-card-container {
-    min-height: 480px;
+    padding: var(--space-lg);
   }
 
-  .timeline-week {
-    flex-direction: column;
-    gap: var(--space-xs);
+  .card-nav {
+    gap: var(--space-md);
   }
 
-  .week-label {
-    min-width: auto;
+  .timeline-list {
+    margin-left: var(--space-md);
   }
 }
