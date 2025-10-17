@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def horizontal
   end
+
+  def letter
+  end
 end

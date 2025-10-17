@@ -1,0 +1,179 @@
+/* Letter Layout */
+.letter-content {
+  max-width: 650px;
+  margin: 0;
+  padding: 120px var(--space-xl) var(--space-3xl) var(--space-xl);
+  min-height: 100vh;
+}
+
+.letter-body {
+  color: var(--ink-black);
+}
+
+/* Typography */
+.letter-para {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+  color: var(--warm-black);
+}
+
+.letter-para em {
+  font-style: italic;
+  color: var(--ink-black);
+}
+
+.letter-list {
+  margin: var(--space-lg) 0;
+  padding-left: var(--space-lg);
+  list-style: none;
+}
+
+.letter-list li {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--warm-black);
+  margin-bottom: var(--space-md);
+  position: relative;
+  padding-left: var(--space-sm);
+}
+
+.letter-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--ink-black);
+  opacity: 0.4;
+}
+
+/* Timeline within letter */
+.letter-timeline {
+  margin: var(--space-2xl) 0;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.timeline-intro {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+  color: var(--warm-black);
+}
+
+.timeline-week {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  gap: var(--space-md);
+  align-items: baseline;
+}
+
+.week-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink-black);
+  opacity: 0.6;
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+.timeline-week p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--warm-black);
+  margin: 0;
+}
+
+.timeline-footer {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--warm-black);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--light-gray);
+}
+
+.timeline-footer strong {
+  color: var(--ink-black);
+  font-weight: 600;
+}
+
+/* CTA within letter */
+.letter-cta {
+  margin: var(--space-2xl) 0;
+}
+
+.cta-button-letter {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--ink-black);
+  color: var(--paper-white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: opacity 0.2s ease;
+  border-radius: 3px;
+}
+
+.cta-button-letter:hover {
+  opacity: 0.85;
+}
+
+.cta-alt {
+  margin-top: var(--space-sm);
+  font-size: 0.9375rem;
+  color: var(--warm-black);
+}
+
+.cta-alt a {
+  color: var(--ink-black);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-black);
+  transition: opacity 0.2s ease;
+}
+
+.cta-alt a:hover {
+  opacity: 0.6;
+}
+
+/* Signature */
+.letter-signature {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--light-gray);
+}
+
+.letter-signature p {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ink-black);
+  margin: 0;
+}
+
+.signature-sub {
+  font-size: 0.9375rem;
+  color: var(--subtle-gray);
+  margin-top: var(--space-xs);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .letter-content {
+    padding: 100px var(--space-md) var(--space-2xl) var(--space-md);
+  }
+
+  .letter-para,
+  .letter-list li,
+  .timeline-intro {
+    font-size: 1rem;
+  }
+
+  .timeline-week {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .week-label {
+    min-width: auto;
+  }
+}
