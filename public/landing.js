@@ -154,6 +154,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Timeline tab switching
+    const timelineTabs = document.querySelectorAll('.timeline-tab');
+    const timelineContents = document.querySelectorAll('.timeline-content');
+
+    if (timelineTabs.length > 0) {
+        timelineTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetTimeline = this.getAttribute('data-timeline');
+
+                // Remove active class from all tabs
+                timelineTabs.forEach(t => t.classList.remove('active'));
+
+                // Remove active class from all timeline contents
+                timelineContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding timeline content
+                const targetContent = document.getElementById('timeline-' + targetTimeline);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // Calendly button handler for letter page
+    const calendlyButtonLetter = document.querySelector('.cta-button-letter');
+    if (calendlyButtonLetter) {
+        calendlyButtonLetter.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({url: 'https://calendly.com/kateleext/takuma'});
+            }
+        });
+    }
+
     updateHeader();
     updateDates();
 });

@@ -18,9 +18,9 @@
 <main class="letter-content">
   <div class="letter-body">
 
-    <p class="letter-greeting">Dear Maker,</p>
+    <p class="letter-greeting">Hey there,</p>
 
-    <p class="letter-para">
+    <p class="letter-para letter-opening">
       Code is becoming commodity. Your mojo isn't.
     </p>
 
@@ -32,25 +32,89 @@
       We surface what you're too close to see and make it your competitive advantage.
     </p>
 
-    <div class="letter-timeline">
-      <div class="timeline-week">
-        <span class="week-label">Week 1</span>
-        <p>We extract what makes you special. Not your marketing copy. The real thing.</p>
+    <p class="letter-para letter-intro">For example:</p>
+
+    <!-- Interactive Timeline Card -->
+    <div class="timeline-card">
+      <div class="timeline-tabs">
+        <button class="timeline-tab active" data-timeline="sales">Sales</button>
+        <button class="timeline-tab" data-timeline="product">Product</button>
+        <button class="timeline-tab" data-timeline="newbets">New Bets</button>
       </div>
 
-      <div class="timeline-week">
-        <span class="week-label">Week 2</span>
-        <p>We translate it into agentic behavior. The interface, the copy, the way it thinks.</p>
+      <!-- Sales Timeline -->
+      <div class="timeline-content active" id="timeline-sales">
+        <p class="timeline-context">How would you show up if you had infinite time to prepare for each lead?</p>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 1</span>
+          <p>We study your best deals. What made them close? What do you ask in discovery that others skip? Where does your intuition override the template?</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 2</span>
+          <p>We build qualification logic that thinks like you. Not scoring rubrics—actual pattern matching on what signals readiness to buy.</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 3</span>
+          <p>We design outreach that sounds like you on your best day. The research depth, the specific questions, the way you establish credibility.</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 4</span>
+          <p>You test with real leads. We watch how it performs and tune until it wins through quality, not volume.</p>
+        </div>
       </div>
 
-      <div class="timeline-week">
-        <span class="week-label">Week 3</span>
-        <p>We make it sing. Prompts tuned, data wired up, systems humming.</p>
+      <!-- Product Timeline -->
+      <div class="timeline-content" id="timeline-product">
+        <p class="timeline-context">You can't hold every customer's hand forever. But your AI could.</p>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 1</span>
+          <p>We map your onboarding. Where do users actually get stuck? What questions surface when they're confused? What makes the difference between activation and churn?</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 2</span>
+          <p>We design guidance that feels like your support. Not help docs—actual interventions at the moments that matter, in your voice.</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 3</span>
+          <p>We wire up contextual intelligence. It watches usage patterns, anticipates struggles, surfaces relevant help before frustration sets in.</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 4</span>
+          <p>You test with real users. We watch the interactions and refine until every customer feels like they have you.</p>
+        </div>
       </div>
 
-      <div class="timeline-week">
-        <span class="week-label">Week 4</span>
-        <p>You take the wheel. We adjust until it delivers, then hand you the keys.</p>
+      <!-- New Bets Timeline -->
+      <div class="timeline-content" id="timeline-newbets">
+        <p class="timeline-context">AI has given you more ideas than you know what to do with. How will you build it in a way only you could?</p>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 1</span>
+          <p>We explore the idea with you. What's the core insight others are missing? What's the trap you need to avoid? What would make this unmistakably yours?</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 2</span>
+          <p>We prototype the unique approach. Not the obvious AI play—the specific angle that leverages what you know that others don't.</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 3</span>
+          <p>We build the minimum that proves it. Enough to validate the core assumption, refined enough to show the real potential.</p>
+        </div>
+
+        <div class="timeline-week">
+          <span class="week-label">Week 4</span>
+          <p>You test in real scenarios. We watch what works and what doesn't, then hand you a foundation to build on.</p>
+        </div>
       </div>
 
       <p class="timeline-footer">
