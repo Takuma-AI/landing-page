@@ -1,6 +1,6 @@
 /* Letter Page Background */
 body:has(.letter-content) {
-  background-color: #000000;
+  background-color: #e8e8e8;
 }
 
 /* Letter Layout */
@@ -12,57 +12,59 @@ body:has(.letter-content) {
 }
 
 .letter-body {
-  color: #e8e8e8;
+  color: var(--ink-black);
 }
 
 /* Typography */
 .letter-subject {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #e8e8e8;
-  margin-bottom: var(--space-xl);
-  opacity: 0.5;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: var(--space-sm);
+  color: var(--ink-black);
+  margin-bottom: var(--space-lg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .letter-greeting {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  margin-bottom: var(--space-xl);
-  color: #e8e8e8;
-  font-weight: 450;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-lg);
+  color: var(--ink-black);
+  font-weight: 400;
 }
 
 .letter-para {
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.8;
   margin-bottom: var(--space-lg);
-  color: #e8e8e8;
-  font-weight: 450;
+  color: var(--ink-black);
+  font-weight: 400;
 }
 
 .letter-opening {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--ink-black);
   margin-bottom: var(--space-lg);
 }
 
 .letter-intro {
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.9375rem;
-  font-weight: 500;
-  color: #e8e8e8;
-  opacity: 0.7;
+  font-weight: 400;
+  color: var(--ink-black);
   margin-bottom: var(--space-md);
   margin-top: var(--space-xl);
 }
 
 .letter-para em {
   font-style: italic;
-  color: #ffffff;
+  color: var(--ink-black);
 }
 
 .letter-list {
@@ -114,9 +116,10 @@ body:has(.letter-content) {
 }
 
 .timeline-card-title {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   color: var(--ink-black);
   margin: 0 0 var(--space-md) 0;
   padding-bottom: var(--space-xs);
@@ -135,8 +138,8 @@ body:has(.letter-content) {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--subtle-gray);
-  opacity: 0.3;
+  background-color: var(--ink-black);
+  opacity: 0.2;
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
@@ -144,7 +147,7 @@ body:has(.letter-content) {
 }
 
 .card-nav-dot:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .card-nav-dot.active {
@@ -153,10 +156,11 @@ body:has(.letter-content) {
 }
 
 .timeline-context {
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
   color: var(--ink-black);
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-md);
   border-bottom: 1px solid var(--light-gray);
@@ -170,8 +174,9 @@ body:has(.letter-content) {
 }
 
 .week-label {
-  font-size: 0.8125rem;
-  font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--ink-black);
   opacity: 0.7;
   white-space: nowrap;
@@ -179,23 +184,26 @@ body:has(.letter-content) {
 }
 
 .timeline-week p {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--warm-black);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--ink-black);
   margin: 0;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 .timeline-footer {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: #e8e8e8;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--ink-black);
   margin-top: var(--space-xl);
   margin-bottom: var(--space-2xl);
+  font-weight: 400;
 }
 
 .timeline-footer strong {
-  color: #ffffff;
+  color: var(--ink-black);
   font-weight: 600;
 }
 
@@ -205,15 +213,17 @@ body:has(.letter-content) {
 }
 
 .cta-button-letter {
+  font-family: 'IBM Plex Mono', monospace;
   display: inline-block;
   padding: 12px 24px;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ink-black);
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   transition: opacity 0.2s ease;
-  border-radius: 3px;
+  border-radius: 0;
+  border: 2px solid var(--ink-black);
 }
 
 .cta-button-letter:hover {
@@ -226,15 +236,18 @@ body:has(.letter-content) {
 }
 
 .letter-signature p {
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: #e8e8e8;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-black);
   margin: 0;
+  font-weight: 400;
 }
 
 .signature-title {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8125rem;
+  color: var(--ink-black);
+  opacity: 0.6;
   font-weight: 400;
 }
 
