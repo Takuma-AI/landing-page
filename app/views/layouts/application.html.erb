@@ -54,6 +54,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "landing", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "horizontal", "data-turbo-track": "reload" if controller_name == "pages" && action_name == "horizontal" %>
     <%= javascript_importmap_tags %>
   </head>
 

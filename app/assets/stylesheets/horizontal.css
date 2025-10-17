@@ -1,0 +1,295 @@
+/* Horizontal Scroll Layout - Desktop */
+@media (min-width: 769px) {
+  body:has(.horizontal-scroll) {
+    overflow: hidden;
+  }
+
+  .horizontal-scroll {
+    display: flex;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .slide {
+    min-width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2xl) var(--space-xl);
+    position: relative;
+  }
+
+  .slide-content {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  /* Hero Slide */
+  .slide-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .slide-hero .lead {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .statement-inline {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg) 0 var(--space-lg) var(--space-lg);
+    border-left: 3px solid var(--ink-black);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink-black);
+    font-style: normal;
+  }
+
+  /* Service Slides */
+  .slide-service {
+    background-color: var(--paper-white);
+  }
+
+  .slide-service:nth-child(even) {
+    background-color: #f5f5f3;
+  }
+
+  .slide-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-md);
+    color: var(--ink-black);
+    opacity: 0.6;
+  }
+
+  .slide-service h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: var(--space-lg);
+    color: var(--ink-black);
+  }
+
+  .slide-service p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--warm-black);
+  }
+
+  /* Timeline Slide */
+  .slide-timeline {
+    background-color: var(--paper-white);
+  }
+
+  .slide-timeline h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .timeline-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .timeline-item-compact {
+    display: flex;
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .timeline-item-compact .week-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink-black);
+    flex-shrink: 0;
+  }
+
+  .timeline-item-compact p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--warm-black);
+  }
+
+  .timeline-item-compact p strong {
+    color: var(--ink-black);
+    font-weight: 600;
+  }
+
+  .timeline-footer-compact {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--warm-black);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--light-gray);
+  }
+
+  .timeline-footer-compact strong {
+    color: var(--ink-black);
+    font-weight: 600;
+  }
+
+  /* CTA Slide */
+  .slide-cta {
+    background-color: var(--ink-black);
+    color: var(--paper-white);
+  }
+
+  .slide-cta h2 {
+    color: var(--paper-white);
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .slide-cta .cta-description {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .slide-cta .cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--paper-white);
+    color: var(--ink-black);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+    border-radius: 3px;
+  }
+
+  .slide-cta .cta-button:hover {
+    opacity: 0.85;
+  }
+
+  .slide-cta .contact-alt {
+    margin-top: var(--space-md);
+    font-size: 0.9375rem;
+  }
+
+  .slide-cta .contact-alt a {
+    color: var(--paper-white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--paper-white);
+    transition: opacity 0.2s ease;
+  }
+
+  .slide-cta .contact-alt a:hover {
+    opacity: 0.6;
+  }
+
+  /* Scroll indicator */
+  .horizontal-scroll::after {
+    content: "→";
+    position: fixed;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+    font-size: 2rem;
+    color: var(--ink-black);
+    opacity: 0.2;
+    pointer-events: none;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .slide-cta ~ .horizontal-scroll::after {
+    display: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+  }
+}
+
+/* Mobile - Vertical Stack */
+@media (max-width: 768px) {
+  .horizontal-scroll {
+    display: block;
+    padding-top: 100px;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .slide {
+    min-height: auto;
+    padding: var(--space-xl) var(--space-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .slide-content {
+    max-width: 100%;
+  }
+
+  .slide-hero h1 {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+
+  .statement-inline {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg) 0 var(--space-lg) var(--space-lg);
+    border-left: 3px solid var(--ink-black);
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .slide-service {
+    background-color: transparent !important;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .slide-label {
+    font-size: 0.8125rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .slide-service h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .slide-service p {
+    font-size: 0.9375rem;
+  }
+
+  .slide-timeline {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .timeline-compact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .slide-cta {
+    background-color: var(--ink-black);
+    color: var(--paper-white);
+    padding: var(--space-xl) var(--space-md);
+    margin: var(--space-xl) 0 0;
+  }
+
+  .slide-cta h2 {
+    font-size: 1.5rem;
+  }
+}
