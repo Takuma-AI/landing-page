@@ -1,7 +1,7 @@
 /* Letter Layout */
 .letter-content {
   max-width: 650px;
-  margin: 0;
+  margin: 0 auto;
   padding: 120px var(--space-xl) var(--space-3xl) var(--space-xl);
   min-height: 100vh;
 }
@@ -11,6 +11,14 @@
 }
 
 /* Typography */
+.letter-greeting {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-xl);
+  color: var(--ink-black);
+  font-weight: 400;
+}
+
 .letter-para {
   font-size: 1.0625rem;
   line-height: 1.7;
@@ -52,13 +60,6 @@
   padding: var(--space-xl) 0;
   border-top: 1px solid var(--light-gray);
   border-bottom: 1px solid var(--light-gray);
-}
-
-.timeline-intro {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  margin-bottom: var(--space-lg);
-  color: var(--warm-black);
 }
 
 .timeline-week {
@@ -163,8 +164,7 @@
   }
 
   .letter-para,
-  .letter-list li,
-  .timeline-intro {
+  .letter-list li {
     font-size: 1rem;
   }
 
