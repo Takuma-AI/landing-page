@@ -18,14 +18,15 @@ body:has(.letter-content) {
 /* Typography */
 .letter-subject {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-black);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 
 .letter-greeting {
