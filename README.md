@@ -1,38 +1,24 @@
-# Takuma Landing Page
+# README
 
-A clean, spacious landing page with Japanese-inspired aesthetics.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Design Principles
+Things you may want to cover:
 
-- **Ma (間)** - Generous negative space that gives meaning to content
-- **Simplicity** - Clean typography and minimal decoration
-- **Flow** - Natural reading rhythm with subtle animations
-- **Golden threads** - Accent color representing the unique patterns we find
+* Ruby version
 
-## Structure
+* System dependencies
 
-- `index.html` - Semantic HTML structure
-- `style.css` - Japanese-inspired spacious design
-- `script.js` - Subtle animations and interactions
+* Configuration
 
-## Local Development
+* Database creation
 
-Simply open `index.html` in a browser or serve with any static server:
+* Database initialization
 
-```bash
-python3 -m http.server 8000
-# Visit http://localhost:8000
-```
+* How to run the test suite
 
-## Typography
+* Services (job queues, cache servers, search engines, etc.)
 
-- Headlines: Inter (500-600 weight)
-- Body: Inter (400 weight)
-- Monospace accents: IBM Plex Mono
+* Deployment instructions
 
-## Color Palette
-
-- Ink Black: #1a1a1a
-- Warm Black: #2d2d2d
-- Paper White: #fafaf8
-- Accent Gold: #d4af37 (golden threads)
+* ...
