@@ -191,7 +191,7 @@ body:has(.letter-content) {
 
 /* CTA within letter */
 .letter-cta {
-  margin: var(--space-2xl) 0;
+  margin: var(--space-xl) 0 var(--space-2xl) 0;
 }
 
 .cta-button-letter {
@@ -210,41 +210,22 @@ body:has(.letter-content) {
   opacity: 0.85;
 }
 
-.cta-alt {
-  margin-top: var(--space-sm);
-  font-size: 0.9375rem;
-  color: var(--warm-black);
-}
-
-.cta-alt a {
-  color: var(--ink-black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--ink-black);
-  transition: opacity 0.2s ease;
-}
-
-.cta-alt a:hover {
-  opacity: 0.6;
-}
-
 /* Signature */
 .letter-signature {
-  margin-top: var(--space-2xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--light-gray);
+  margin-top: var(--space-lg);
 }
 
 .letter-signature p {
   font-size: 1.0625rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--ink-black);
   margin: 0;
 }
 
-.signature-sub {
-  font-size: 0.9375rem;
+.signature-title {
+  font-size: 0.875rem;
   color: var(--subtle-gray);
-  margin-top: var(--space-xs);
+  font-weight: 400;
 }
 
 /* Mobile adjustments */
