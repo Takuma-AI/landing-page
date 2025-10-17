@@ -11,22 +11,39 @@ body:has(.letter-content) {
   min-height: 100vh;
 }
 
-.letter-body {
-  color: var(--ink-black);
+/* Letter Envelope */
+.letter-envelope {
+  background-color: #ffffff;
+  border: 2px solid var(--ink-black);
+  padding: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-3xl);
+  position: relative;
 }
 
-/* Typography */
-.letter-subject {
+.letter-envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--ink-black);
+  margin: 6px;
+  pointer-events: none;
+}
+
+.envelope-text {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-black);
-  margin-bottom: var(--space-xl);
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 2px;
+  text-align: center;
+}
+
+.letter-body {
+  color: var(--ink-black);
 }
 
 .letter-greeting {
