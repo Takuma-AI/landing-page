@@ -30,10 +30,10 @@
 
     <p class="letter-para letter-intro">Here's what that might look like:</p>
 
-    <!-- Stacked Timeline Cards -->
-    <div class="timeline-card-container">
+    <!-- Swipeable Timeline Cards -->
+    <div class="timeline-card-container" id="card-container">
       <!-- Sales Card -->
-      <div class="timeline-card active" data-timeline="sales" data-tab-label="SALES">
+      <div class="timeline-card active" data-timeline="sales">
         <h3 class="timeline-card-title">SALES</h3>
         <p class="timeline-context">How would you show up if you had infinite time to prepare for each lead?</p>
 
@@ -59,7 +59,7 @@
       </div>
 
       <!-- Product Card -->
-      <div class="timeline-card" data-timeline="product" data-tab-label="PRODUCT">
+      <div class="timeline-card" data-timeline="product">
         <h3 class="timeline-card-title">PRODUCT</h3>
         <p class="timeline-context">You can't hold every customer's hand forever. But your AI could.</p>
 
@@ -85,7 +85,7 @@
       </div>
 
       <!-- New Bets Card -->
-      <div class="timeline-card" data-timeline="newbets" data-tab-label="NEW BETS">
+      <div class="timeline-card" data-timeline="newbets">
         <h3 class="timeline-card-title">NEW BETS</h3>
         <p class="timeline-context">AI has given you more ideas than you know what to do with. How will you build it in a way only you could?</p>
 
@@ -109,6 +109,13 @@
           <p>You test in real scenarios. We watch what works and what doesn't, then hand you a foundation to build on.</p>
         </div>
       </div>
+    </div>
+
+    <!-- Card Navigation Dots -->
+    <div class="card-nav">
+      <button class="card-nav-dot active" data-card="0" aria-label="Sales"></button>
+      <button class="card-nav-dot" data-card="1" aria-label="Product"></button>
+      <button class="card-nav-dot" data-card="2" aria-label="New Bets"></button>
     </div>
 
     <p class="timeline-footer">

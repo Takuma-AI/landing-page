@@ -154,19 +154,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Stacked card switching
+    // Swipeable card carousel
+    const cardContainer = document.getElementById('card-container');
     const timelineCards = document.querySelectorAll('.timeline-card');
+    const navDots = document.querySelectorAll('.card-nav-dot');
+    let currentCard = 0;
 
-    if (timelineCards.length > 0) {
-        timelineCards.forEach(card => {
-            card.addEventListener('click', function() {
-                // Remove active class from all cards
-                timelineCards.forEach(c => c.classList.remove('active'));
+    function showCard(index) {
+        // Remove active from all
+        timelineCards.forEach(card => card.classList.remove('active'));
+        navDots.forEach(dot => dot.classList.remove('active'));
 
-                // Add active class to clicked card
-                this.classList.add('active');
+        // Add active to current
+        if (timelineCards[index]) {
+            timelineCards[index].classList.add('active');
+        }
+        if (navDots[index]) {
+            navDots[index].classList.add('active');
+        }
+        currentCard = index;
+    }
+
+    // Dot navigation
+    if (navDots.length > 0) {
+        navDots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const cardIndex = parseInt(this.getAttribute('data-card'));
+                showCard(cardIndex);
             });
         });
+    }
+
+    // Touch swipe support
+    if (cardContainer) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        cardContainer.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        cardContainer.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next card
+                    const nextCard = Math.min(currentCard + 1, timelineCards.length - 1);
+                    showCard(nextCard);
+                } else {
+                    // Swipe right - previous card
+                    const prevCard = Math.max(currentCard - 1, 0);
+                    showCard(prevCard);
+                }
+            }
+        }
     }
 
     // Calendly button handler for letter page

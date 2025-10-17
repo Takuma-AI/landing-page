@@ -78,64 +78,29 @@ body:has(.letter-content) {
   opacity: 0.4;
 }
 
-/* Interactive Timeline Cards - Stacked like restaurant menus */
+/* Swipeable Timeline Cards */
 .timeline-card-container {
   margin: var(--space-lg) 0 var(--space-2xl) 0;
   position: relative;
-  min-height: 480px;
+  min-height: 450px;
 }
 
 .timeline-card {
   position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
   background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   padding: var(--space-lg) var(--space-md);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: calc(100% - 60px);
-}
-
-.timeline-card[data-timeline="sales"] {
-  left: 0;
-  z-index: 3;
-}
-
-.timeline-card[data-timeline="product"] {
-  left: 24px;
-  z-index: 2;
-}
-
-.timeline-card[data-timeline="newbets"] {
-  left: 48px;
-  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .timeline-card.active {
-  z-index: 10;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Card tab/bookmark on the side */
-.timeline-card::after {
-  content: attr(data-tab-label);
-  position: absolute;
-  right: -60px;
-  top: 0;
-  width: 60px;
-  height: 100%;
-  background-color: #ffffff;
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--ink-black);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  padding: var(--space-sm) 0;
+  opacity: 1;
+  visibility: visible;
 }
 
 .timeline-card-title {
@@ -146,6 +111,35 @@ body:has(.letter-content) {
   margin: 0 0 var(--space-md) 0;
   padding-bottom: var(--space-xs);
   border-bottom: 1px solid var(--light-gray);
+}
+
+/* Card navigation dots */
+.card-nav {
+  display: flex;
+  gap: var(--space-xs);
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.card-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--subtle-gray);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  padding: 0;
+}
+
+.card-nav-dot:hover {
+  opacity: 0.6;
+}
+
+.card-nav-dot.active {
+  background-color: var(--ink-black);
+  opacity: 1;
 }
 
 .timeline-context {
@@ -265,29 +259,7 @@ body:has(.letter-content) {
   }
 
   .timeline-card-container {
-    min-height: 520px;
-  }
-
-  .timeline-card {
-    width: calc(100% - 50px);
-  }
-
-  .timeline-card::after {
-    width: 50px;
-    right: -50px;
-    font-size: 0.625rem;
-  }
-
-  .timeline-card[data-timeline="sales"] {
-    left: 0;
-  }
-
-  .timeline-card[data-timeline="product"] {
-    left: 16px;
-  }
-
-  .timeline-card[data-timeline="newbets"] {
-    left: 32px;
+    min-height: 480px;
   }
 
   .timeline-week {
