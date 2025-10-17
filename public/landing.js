@@ -154,29 +154,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Timeline tab switching
-    const timelineTabs = document.querySelectorAll('.timeline-tab');
-    const timelineContents = document.querySelectorAll('.timeline-content');
+    // Stacked card switching
+    const timelineCards = document.querySelectorAll('.timeline-card');
 
-    if (timelineTabs.length > 0) {
-        timelineTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const targetTimeline = this.getAttribute('data-timeline');
+    if (timelineCards.length > 0) {
+        timelineCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove active class from all cards
+                timelineCards.forEach(c => c.classList.remove('active'));
 
-                // Remove active class from all tabs
-                timelineTabs.forEach(t => t.classList.remove('active'));
-
-                // Remove active class from all timeline contents
-                timelineContents.forEach(content => content.classList.remove('active'));
-
-                // Add active class to clicked tab
+                // Add active class to clicked card
                 this.classList.add('active');
-
-                // Show corresponding timeline content
-                const targetContent = document.getElementById('timeline-' + targetTimeline);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
             });
         });
     }
