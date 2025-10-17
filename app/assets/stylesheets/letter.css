@@ -82,7 +82,7 @@ body:has(.letter-content) {
 .timeline-card-container {
   margin: var(--space-lg) 0 var(--space-2xl) 0;
   position: relative;
-  height: 550px;
+  min-height: 480px;
 }
 
 .timeline-card {
@@ -93,9 +93,7 @@ body:has(.letter-content) {
   padding: var(--space-lg) var(--space-md);
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  width: calc(100% - 60px);
 }
 
 .timeline-card[data-timeline="sales"] {
@@ -116,6 +114,28 @@ body:has(.letter-content) {
 .timeline-card.active {
   z-index: 10;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Card tab/bookmark on the side */
+.timeline-card::after {
+  content: attr(data-tab-label);
+  position: absolute;
+  right: -60px;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink-black);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: var(--space-sm) 0;
 }
 
 .timeline-card-title {
@@ -245,7 +265,17 @@ body:has(.letter-content) {
   }
 
   .timeline-card-container {
-    height: 600px;
+    min-height: 520px;
+  }
+
+  .timeline-card {
+    width: calc(100% - 50px);
+  }
+
+  .timeline-card::after {
+    width: 50px;
+    right: -50px;
+    font-size: 0.625rem;
   }
 
   .timeline-card[data-timeline="sales"] {
