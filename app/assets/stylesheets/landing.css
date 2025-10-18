@@ -335,7 +335,7 @@ h2 {
     background-color: var(--ink-black);
     color: var(--paper-white);
     padding: var(--space-xl);
-    margin: var(--space-2xl) calc(-1 * var(--space-xl)) calc(-1 * var(--space-2xl));
+    margin: var(--space-2xl) calc(-1 * var(--space-xl)) 0;
 }
 
 .cta-section h2 {
@@ -438,5 +438,6 @@ h2 {
 
     .cta-section {
         padding-bottom: var(--space-2xl);
+        margin-bottom: calc(-1 * var(--space-2xl));
     }
 }
