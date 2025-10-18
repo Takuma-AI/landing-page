@@ -1,0 +1,187 @@
+/* Postcards Page - Thought Leadership as Expedition Correspondence */
+
+/* Override html and body background for postcards */
+html, body {
+  background-color: #E8E8E8 !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E") !important;
+}
+
+/* Transparent navbar for postcards */
+.takuma-nav {
+  background-color: transparent !important;
+}
+
+.postcards-page {
+  padding: 80px 40px 40px;
+}
+
+.postcards-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 60px;
+  padding: 40px 20px;
+}
+
+/* Postcard Component - 4x6 aspect ratio (1.5:1) */
+.postcard {
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 1.5 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.postcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.postcard.flipped .postcard-inner {
+  transform: rotateY(180deg);
+}
+
+.postcard-front,
+.postcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.postcard-front {
+  background: white;
+}
+
+.postcard-back {
+  background: #F8F8F6;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Front - Image */
+.postcard-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Stamp - Category Indicator (hidden for now) */
+.postcard-stamp {
+  display: none;
+}
+
+.postcard-stamp-back {
+  display: none;
+}
+
+.stamp-text {
+  display: none;
+}
+
+/* Back - Content */
+.postcard-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.postcard-text {
+  flex: 1;
+}
+
+.postcard-meta {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: #999;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.postcard-date {
+  font-weight: 600;
+  color: #666;
+}
+
+.postcard-to {
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.postcard-content p {
+  margin: 0 0 16px 0;
+}
+
+.postcard-content p:last-child {
+  margin-bottom: 0;
+}
+
+.postcard-signature {
+  font-style: italic;
+  margin-top: 24px !important;
+  color: #666;
+}
+
+/* Hover Effects */
+.postcard:hover {
+  transform: scale(1.02);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .postcards-page {
+    padding: 100px 20px 60px;
+  }
+
+  .postcards-container {
+    gap: 40px;
+    padding: 20px 0;
+  }
+
+  .postcard {
+    max-width: 100%;
+  }
+
+  .postcard-content {
+    padding: 30px;
+    font-size: 14px;
+  }
+
+  .postcard:hover {
+    transform: none !important;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .postcard-content {
+    padding: 24px;
+    font-size: 13px;
+  }
+}
+
+/* Footer override for postcards page */
+.site-footer {
+  background: transparent;
+}

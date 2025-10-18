@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def letter
   end
+
+  def postcards
+  end
 end

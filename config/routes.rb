@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # Horizontal scroll version
   get "horizontal", to: "pages#horizontal"
 
+  # Postcards - thought leadership as expedition correspondence
+  get "postcards", to: "pages#postcards"
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

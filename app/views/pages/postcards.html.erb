@@ -1,0 +1,63 @@
+<!-- Unified Takuma Navigation -->
+<nav class="takuma-nav" id="takuma-nav">
+  <%= image_tag "takuma-icon.png", alt: "Takuma", class: "takuma-nav__icon", id: "takuma-icon" %>
+  <span class="takuma-nav__text">TAKUMA</span>
+  <span class="takuma-nav__divider"></span>
+  <span class="takuma-nav__current">POSTCARDS</span>
+  <div class="takuma-nav__links">
+    <a href="/" class="takuma-nav__link">BESPOKE</a>
+    <a href="https://hashi.takuma.ai" class="takuma-nav__link">HASHI</a>
+    <a href="https://codec-rp6w.onrender.com" class="takuma-nav__link">CODEC</a>
+  </div>
+</nav>
+
+<!-- Postcards Gallery -->
+<main class="postcards-page">
+  <div class="postcards-container">
+
+    <!-- Postcard #1: Neo vs Agents -->
+    <div class="postcard">
+      <div class="postcard-inner">
+        <!-- Front -->
+        <div class="postcard-front">
+          <%= image_tag "postcards/neo-agents.png", alt: "AI as Extension", class: "postcard-image" %>
+        </div>
+
+        <!-- Back -->
+        <div class="postcard-back">
+          <div class="postcard-content">
+            <div class="postcard-text">
+              <p>One of the dominant mental models in AI: "digital assistants." External agents you hire to do things, so you don't have to think about them anymore.</p>
+
+              <p>Personally, something feels off when I use AI that way. It's like having robot arms hammer piano keys. Technically impressive. But it's not me playing.</p>
+
+              <p>Instead, I think of AI as my own extension. I'm painstakingly steering it at first, willing a high quality bar into existence...then it gradually becomes second nature.</p>
+
+              <p>It's less like being "served", and more like defying gravity with my new kung fu program.</p>
+
+              <p class="postcard-signature">You feel me?</p>
+            </div>
+
+            <div class="postcard-meta">
+              <div class="postcard-date">Oct 11, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <a href="mailto:hello@takuma.ai">hello@takuma.ai</a>
+      <span class="footer-copyright">© 2025 Takuma AI, LLC</span>
+    </div>
+    <a href="/postcards" class="footer-link">POSTCARDS</a>
+  </div>
+</footer>
+
+<script src="/postcards.js" defer></script>
