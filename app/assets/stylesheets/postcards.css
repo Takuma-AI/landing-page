@@ -4,6 +4,17 @@
 html, body {
   background-color: #E8E8E8 !important;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E") !important;
+  min-height: 100vh !important;
+}
+
+body {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.postcards-page {
+  flex: 1;
+  padding: 80px 40px 40px;
 }
 
 /* Transparent navbar for postcards */
@@ -11,9 +22,6 @@ html, body {
   background-color: transparent !important;
 }
 
-.postcards-page {
-  padding: 80px 40px 40px;
-}
 
 .postcards-container {
   max-width: 1400px;
